@@ -1,5 +1,5 @@
 /* programa principal */
-import { calcularPrecioVenta, calcularPromedio } from './modelo.js';
+import { calcularPrecioVenta, calcularPromedio, calcularNota } from './modelo.js';
 
 //Ejercicio Nro. 13:
 
@@ -14,6 +14,7 @@ const ejecutarCalculo = () => {
 ejecutarCalculo();
 
 
+//Ejercicio Nro. 14:
 const ejecutarCalculoPromedio = () => {
     let nota1 = Number(prompt(`Ingrese primer nota:`));
     let nota2 = Number(prompt(`Ingrese segunada nota:`));
@@ -24,8 +25,16 @@ const ejecutarCalculoPromedio = () => {
 
 ejecutarCalculoPromedio();
 
-//Ejercicio Nro. 14:
+
 //Ejercicio Nro. 15:
+const evaluarPromedio = () => {
+    let promedio = Number(prompt("Ingrese el promedio (0-10):"));
+    let resultado = calcularNota(promedio);
+    console.log(`Promedio: ${promedio} - ${resultado}`);
+}
+
+evaluarPromedio();
+
 //Ejercicio Nro. 16:
 //Ejercicio Nro. 17:
 //Ejercicio Nro. 18:
