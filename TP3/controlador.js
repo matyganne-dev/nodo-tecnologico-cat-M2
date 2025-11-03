@@ -1,11 +1,11 @@
 /* programa principal */
-import { calcularPrecioVenta } from './modelo.js';
+import { calcularPrecioVenta, calcularPromedio } from './modelo.js';
 
 //Ejercicio Nro. 13:
 
 const ejecutarCalculo = () => {
 
-    let importe = Number(prompt(`ingrece el precio del producto:`));
+    let importe = Number(prompt(`ingrese el precio del producto:`));
     let margenGanancia = Number(prompt(`ingrese margen de ganancia que se aplicara sobre el producto:`));
     let precioVenta = calcularPrecioVenta(importe, margenGanancia);
     console.log(`Precio de venta: $${precioVenta.toFixed(2)}`);
@@ -13,6 +13,16 @@ const ejecutarCalculo = () => {
 
 ejecutarCalculo();
 
+
+const ejecutarCalculoPromedio = () => {
+    let nota1 = Number(prompt(`Ingrese primer nota:`));
+    let nota2 = Number(prompt(`Ingrese segunada nota:`));
+    let nota3 = Number(prompt(`Ingrese tercer nota:`));
+    let promedio = calcularPromedio(nota1, nota2, nota3);
+    console.log(`promedio de ${nota1}+${nota2}+${nota3} = ${promedio.toFixed(2)}`);
+}
+
+ejecutarCalculoPromedio();
 
 //Ejercicio Nro. 14:
 //Ejercicio Nro. 15:
