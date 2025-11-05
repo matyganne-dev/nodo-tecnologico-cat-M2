@@ -69,6 +69,39 @@ Nota: Debe devolver un número
 */
 
 
+export function calcularTasa(importeBase, categoria) {
+    let tasa;
+
+    switch (categoria) {
+        case 1:
+            tasa = 5 / 1000;  
+            break;
+        case 2:
+            tasa = 1 / 1000;  
+            break;
+        case 3:
+            tasa = 7 / 1000;  
+            break;
+        case 4:
+            tasa = 2 / 1000;  
+            break;
+        case 5:
+            tasa = 15 / 1000; 
+            break;
+        case 6:
+            tasa = 1 / 1000;  
+            break;
+        default:
+            tasa = 1 / 1000;
+            console.log("ocurrio un error, por tal motivo se dejo la tasa por defecto");
+
+    }
+
+    return importeBase * tasa;
+
+}
+
+
 
 /*Ejercicio N°17: 
 

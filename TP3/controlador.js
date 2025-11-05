@@ -1,5 +1,5 @@
 /* programa principal */
-import { calcularPrecioVenta, calcularPromedio, calcularNota } from './modelo.js';
+import { calcularPrecioVenta, calcularPromedio, calcularNota, calcularTasa } from './modelo.js';
 
 //Ejercicio Nro. 13:
 
@@ -27,8 +27,24 @@ console.log(`Promedio: ${notaPromedio} - ${resultado}`);
 
 //Ejercicio Nro. 16:
 
+const categoria = prompt(
+`ELIJA EL TIPO DE BEBIDA:
+1 - Agua en envases plásticos (5‰)
+2 - Agua en envases retornables (1‰)
+3 - Gaseosas azucaradas en envases plásticos (7‰)
+4 - Gaseosas azucaradas en envases retornables (2‰)
+5 - Bebidas energéticas (15‰)
+6 - Otras bebidas (1‰)
+Ingrese el número de categoría:`
+);
 
+const importeBase = Number(prompt("Ingrese el importe base de la bebida:"));
 
+// Llamar a la función con los datos ingresados
+const impuesto = calcularTasa(parseFloat(importeBase), parseInt(categoria));
+
+// Mostrar el resultado al usuario
+console.log(`El impuesto a pagar es: $${impuesto.toFixed(2)}`);
 
 //Ejercicio Nro. 17:
 //Ejercicio Nro. 18:
