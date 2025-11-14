@@ -38,12 +38,13 @@ como parámetro devuelva un texto que diga los siguientes mensajes.
 • Si la nota = 10 debe devolver “Excelente” 
 Nota: Debe Devolver un Texto
 */
+
 export const calcularNota = (promedio) => {
     if (promedio >= 0 && promedio <= 4) {
         return "Desaprobado";
     } else if (promedio > 4 && promedio <= 7) {
         return "Aprobado";
-    } else if (promedio > 7 && promedio <= 9) {
+    } else if (promedio > 7 && promedio < 10) {
         return "Muy Bueno";
     } else if (promedio === 10) {
         return "Excelente";
@@ -54,7 +55,6 @@ export const calcularNota = (promedio) => {
 
 
 /*Ejercicio N°16: 
-
 El Gobierno Nacional desea aplicar un impuesto (Sobre Tasa) a las bebidas en función de la siguiente 
 clasificación y tipo. 
 1 – Bebidas Agua en envases plásticos = 5 ‰ (cinco por mil) 
@@ -69,27 +69,27 @@ Nota: Debe devolver un número
 */
 
 
-export function calcularTasa(importeBase, categoria) {
+export const calcularTasa = (importeBase, categoria) => {
     let tasa;
 
     switch (categoria) {
         case 1:
-            tasa = 5 / 1000;  
+            tasa = 5 / 1000;
             break;
         case 2:
-            tasa = 1 / 1000;  
+            tasa = 1 / 1000;
             break;
         case 3:
-            tasa = 7 / 1000;  
+            tasa = 7 / 1000;
             break;
         case 4:
-            tasa = 2 / 1000;  
+            tasa = 2 / 1000;
             break;
         case 5:
-            tasa = 15 / 1000; 
+            tasa = 15 / 1000;
             break;
         case 6:
-            tasa = 1 / 1000;  
+            tasa = 1 / 1000;
             break;
         default:
             tasa = 1 / 1000;
@@ -100,7 +100,6 @@ export function calcularTasa(importeBase, categoria) {
     return importeBase * tasa;
 
 }
-
 
 
 /*Ejercicio N°17: 
@@ -134,6 +133,36 @@ Nota: Debe devolver un número
 */
 
 
+export const calcularImporteBaseAgua = (mtscubicos) => {
+    let importeBloque1 = 0;
+    let importeBloque2 = 0;
+    let importeBloque3 = 0;
+
+    let importeBase = 0;
+
+
+    if (mtscubicos <= 50) //bloque 1
+    {
+        importeBloque1 = 50 * 350.00;
+    }
+    else if (mtscubicos <= 70) //bloque 1 y bloque 2
+    {
+        importeBloque1 = 50 * 350.00;
+        importeBloque2 = (mtscubicos - 50) * 555.20;
+    }
+    else //bloque 1 , bloque 2 y bloque 3
+    {
+        importeBloque1 = 50 * 350.00;
+        importeBloque2 = 20 * 555.20;
+        importeBloque3 = (mtscubicos - 70) * 1552.20;
+    }
+    //unifique los if por que haciendolos separados no me da los resultados o yo lo estoy razonando mal
+
+    importeBase = importeBloque1 + importeBloque2 + importeBloque3;
+
+    return importeBase;
+}
+
 /*Ejercicio N°18: 
 Realizar una arrow function que reciba como parámetro el Importe Base de una factura de “Servicios 
 Públicos de Aguas de Catamarca” y a partir de ese importe base calcule y devuelva la Tasa de Subsuelo, que es 
@@ -141,6 +170,11 @@ un importe que corresponde al 3% del importe Base ingresado como parámetro de l
 Nota: Debe devolver un número 
 */
 
+
+export const tasaSubsuelo = (importeBase) => {
+    let tasaSubsuelo = importeBase * 0.03;
+    return tasaSubsuelo;
+}
 
 /*Ejercicio N°19: 
 Realizar una arrow function que reciba como parámetro el Importe Base de una factura de “Servicios 
@@ -150,6 +184,10 @@ la arrow function.
 Nota: Debe devolver un número
 */
 
+export const tasaFiscalizacionENRE = (importeBase) => {
+    let tasaENRE = importeBase * 0.012;
+    return tasaENRE;
+}
 
 
 /*Ejercicio N°20: 
@@ -171,6 +209,27 @@ La función debe retornar la dosis de insulina recomendada y recibir como parám
 Salidas de la aplicación: la aplicación debe indicar la insulina recomendada para el paciente.     
 */
 
+export const calcularDosisInsulina = (glucosa, peso, tipoDiabetes) => {
+    let dosis = 0;
+
+    if (tipoDiabetes === "Tipo 1") {
+        dosis = peso * 0.50;
+        if (glucosa > 180) {
+            dosis += glucosa * 0.50;
+        }
+    }
+    else if (tipoDiabetes === "Tipo 2") {
+        dosis = peso * 0.20;
+        if (glucosa > 180) {
+            dosis += glucosa * 0.50;
+        }
+    }
+
+    return dosis;
+}
+
+
+
 /*Ejercicio N°21: 
 Realizar una arrow function que reciba como parámetro una cadena de texto y que devuelva la cantidad 
 de vocales “mayúsculas y/o minúsculas” que tiene la misma.  
@@ -179,6 +238,21 @@ los caracteres y determinar si es una vocal o no. No debe utilizar métodos de s
 expresiones regulares. 
 Nota: Debe devolver un número. 
 */
+
+export const contarVocales = (cadena) => {
+    let contador = 0;
+
+    for (let i = 0; i < cadena.length; i++) {
+        let caracter = cadena[i];
+
+        if (caracter === 'a' || caracter === 'A' || caracter === 'e' || caracter === 'E' || caracter === 'i' ||
+            caracter === 'I' || caracter === 'o' || caracter === 'O' || caracter === 'u' || caracter === 'U') {
+            contador++;
+        }
+    }
+
+    return contador;
+}
 
 /*Ejercicio N°22: 
 Realizar una arrow function que reciba como parámetro una cadena de texto y devuelva cuántas 
@@ -189,6 +263,26 @@ No debe utilizar métodos de strings como replace(), split() o expresiones regul
 Nota: Debe devolver un número.
 */
 
+export const contarConsonantes = (cadena) => {
+    let contador = 0;
+
+    for (let i = 0; i < cadena.length; i++) {
+        let caracter = cadena[i];
+
+        // Verificar si es una letra
+        if ((caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z')) {
+
+            // Verificar que NO sea vocal
+            if (!(caracter === 'a' || caracter === 'A' || caracter === 'e' || caracter === 'E' || caracter === 'i' ||
+                caracter === 'I' || caracter === 'o' || caracter === 'O' || caracter === 'u' || caracter === 'U')) {
+                contador++;
+            }
+        }
+    }
+
+    return contador;
+}
+
 
 /*Ejercicio N°23: 
 Definir una arrow function que reciba una palabra y determine si contiene al menos dos letras “s” 
@@ -198,6 +292,24 @@ Debe devolver true si se cumplen las dos apariciones y false en caso contrario.
 No puede utilizar métodos como includes() o indexOf(). 
 Nota: Debe devolver un boolean (true ó false). 
 */
+
+export const contieneDosS = (palabra) => {
+    let contador = 0;
+
+    for (let i = 0; i < palabra.length; i++) {
+        let caracter = palabra[i];
+
+        if (caracter === 's' || caracter === 'S') {
+            contador++;
+
+            if (contador >= 2) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
 
 /*Ejercicio N°24: 
 Definir una arrow function que reciba como parámetro una cadena de texto y determine si la misma 
@@ -210,13 +322,63 @@ Si al finalizar el recorrido completo no se encontraron tres espacios, la funci�
 Nota: Debe devolver un boolean (true ó false).
 */
 
+export const contarEspacios = (cadena) => {
+    let contadorEspacios = 0;
+
+    for (let i = 0; i < cadena.length; i++) {
+        let caracter = cadena[i];
+
+        if (caracter === " ") {
+            contadorEspacios++;
+            if (contadorEspacios === 3) {
+                break;
+            }
+        }
+
+    }
+
+    if (contadorEspacios >= 3) {
+        return true;
+    }
+    else {
+
+        return false;
+    }
+
+}
+
+
 /*Ejercicio N°25: 
 Definir una arrow function que reciba como parámetro una cadena de texto y determine si la misma no 
 contiene ningún dígito numérico (del 0 al 9). 
+
 La función debe recorrer la cadena carácter por carácter utilizando un ciclo for. Durante el recorrido, analizar 
 cada carácter y comprobar si se encuentra dentro del rango de los números '0' a '9'. 
+
 Si se detecta algún número, se debe interrumpir inmediatamente el bucle con break y devolver el valor 
 lógico false, ya que la cadena deja de cumplir la condición “no contiene números”. 
 En caso de recorrer la cadena completa sin encontrar ningún número, la función deberá devolver true. 
 Nota: Debe devolver un boolean (true ó false).
 */
+
+export const VerificarCadena = (cadena) => {
+    let cadenaSinNumero = true;
+
+    for (let i = 0; i < cadena.length; i++) {
+        let caracter = cadena[i];
+
+        if (caracter >= "0" && caracter <= "9") // esto funciona pero solo por que estamos en js, en otro lenguaje menos flexible, no funcionaria
+        {
+            cadenaSinNumero = false;
+            break;
+        }
+    }
+
+    if (cadenaSinNumero === false) {
+        return false;
+    }
+    else {
+        return true;
+    }
+
+}
