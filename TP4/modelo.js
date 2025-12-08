@@ -7,11 +7,19 @@ Invoque esa misma función, pasándole como parámetro el vector de la cohorte01
 la cohorte02 y así sucesivamente hasta la cuarta cohorte.
 */
 
-export const mostrarNombreAlumno = (alumnos) => {
-    console.log("\nListado de Alumnos\n");
+export const mostrarNombreAlumno = (alumnos, nombreCohorte) => {
+    console.log(`\nListado de Alumnos ${nombreCohorte}\n`);
     alumnos.forEach((alumno) => {
         console.log(`Alumno: ${alumno.apellido} ${alumno.nombre}`);
     });
 }
 
+export const obtenerHTMLItemsListado = (alumnos) => {
+    let htmlContent = '';
+    //Generamos el listado en el index
+    alumnos.forEach((alumno) => {
+        htmlContent += `<li>${alumno.apellido} ${alumno.nombre}</li>`;
+    });
 
+    return htmlContent;
+}

@@ -1,6 +1,6 @@
 /* programa principal */
 
-import { mostrarNombreAlumno } from './modelo.js';
+import { mostrarNombreAlumno, obtenerHTMLItemsListado } from './modelo.js';
 
 /*
 Ejercicio Nro. 18: ( spread operator ... y métodos de vectores)
@@ -38,10 +38,63 @@ const cohorte04 = [
 
 const alumnos = [...cohorte01, ...cohorte02, ...cohorte03, ...cohorte04];
 
-// console.log(alumnos);
+// Ejercicio N°1
 
-mostrarNombreAlumno(alumnos);
-mostrarNombreAlumno(cohorte01);
-mostrarNombreAlumno(cohorte02);
-mostrarNombreAlumno(cohorte03);
-mostrarNombreAlumno(cohorte04);
+//capturamos los eleemntos
+const btnC1 = document.getElementById('btn-cohorte1');
+const btnC2 = document.getElementById('btn-cohorte2');
+const btnC3 = document.getElementById('btn-cohorte3');
+const btnC4 = document.getElementById('btn-cohorte4');
+const btnLimpiar = document.getElementById('btn-limpiar');
+const resultadosDiv1 = document.getElementById('ejercicio1-resultados');
+
+const listarCohorte = (cohorteVector, nombre) => {
+    // Limpiar resultados Anteriores
+    resultadosDiv1.innerHTML = '';
+
+    // Mostrar en consola como pide el ejercicio
+    mostrarNombreAlumno(cohorteVector, nombre);
+
+    const itemsHTML = obtenerHTMLItemsListado(cohorteVector);
+
+    let htmlContent = `<h3>${nombre}</h3>`;
+
+    //Usamos ternario para avisar sobre si el vector esta vacio
+    htmlContent += (cohorteVector.length > 0)
+        ? `<ul>${itemsHTML}</ul>`
+        : `<p>Error: Vector vacío.</p>`;
+
+    resultadosDiv1.innerHTML = htmlContent;
+};
+
+if (btnC1) {
+    btnC1.addEventListener('click', () => {
+        listarCohorte(cohorte01, "Cohorte 01");
+    });
+}
+if (btnC2) {
+    btnC2.addEventListener('click', () => {
+        listarCohorte(cohorte02, "Cohorte 02");
+    });
+}
+if (btnC3) {
+    btnC3.addEventListener('click', () => {
+        listarCohorte(cohorte03, "Cohorte 03");
+    });
+}
+if (btnC4) {
+    btnC4.addEventListener('click', () => {
+        listarCohorte(cohorte04, "Cohorte 04");
+    });
+}
+if (btnLimpiar) {
+    btnLimpiar.addEventListener('click', () => {
+        resultadosDiv1.innerHTML = '';
+    });
+}
+
+// Ejercicio N°2
+// Ejercicio N°3
+// Ejercicio N°4
+// Ejercicio N°5
+// Ejercicio N°6
