@@ -59,3 +59,31 @@ export const obtenerHTMLItemsFiltrados = (alumnos) => {
     });
     return htmlContent;
 }
+
+/*
+4)Sobre el vector Total de alumnos (cuatro cohortes), aplique el método “sort” = ordenar y ordene los
+datos de todos esos alumnos por nota de menor a mayor.
+*/
+
+
+/*
+5)Sobre el vector Total de alumnos, realice una búsqueda de los siguientes alumnos aplicando el
+método “find” que tienen los vectores incorporados y busque algún alumno por su “dni”. El que ud.
+Desee.
+*/
+
+
+/*
+6)Sobre el vector Total de alumnos, deseamos “contabilizar” la cantidad de alumnos aprobados, es
+decir la cantidad de alumnos que tienen nota > 5; para ello utilicen el método reduce que tienen los
+vectores incorporados para contabilizar. Realice esto de dos formas
+
+    a. Usando una arrow function que a dentro utilice un condicional if/else para saber si la nota >
+    5 y por lo tanto contabilizar los aprobados;
+
+    b. Usando una arrow function que a dentro utilice un operador ternario para saber si la nota >
+    5 y por lo tanto contabilizar los aprobados;
+
+Ambas formas deben llegar al mismo resultado, únicamente que se implementaron de dos formas
+diferentes.
+*/
