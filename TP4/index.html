@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRABAJO PRÁCTICO NRO. 04 – JAVASCRIPT</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <header>
+        <h1>Trabajo Práctico N°4: Cohortes de Alumnos</h1>
+        <p class="subtitle">Fundamentos de Programación con JavaScript (Resultados en
+            DOM y Consola).</p>
+    </header>
+
+    <main>
+        <section class="section-wrap exercise1-container">
+            <h2>1. Listado por Cohorte (forEach)</h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 1</h3>
+                    <p class="description-text">
+                        El objetivo es recorrer cada vector de cohortes (Cohorte 01 a 04) usando el método forEach y
+                        mostrar el Apellido y Nombre de cada alumno en la zona de resultados.
+                    </p>
+                    <button id="btn-ejercicio1" class="action-button">Mostrar Listado de Cohortes</button>
+                </div>
+
+                <div id="ejercicio1-resultados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver los listados...</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+    </main>
+
+    <script type="module" src="controlador.js"></script>
 </body>
+
 </html>
