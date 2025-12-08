@@ -1,6 +1,7 @@
 /* programa principal */
 
 import { mostrarNombreAlumno, obtenerHTMLItemsListado } from './modelo.js';
+import { obtenerAprobados, obtenerDesaprobados, obtenerHTMLItemsFiltrados } from './modelo.js';
 
 /*
 Ejercicio Nro. 18: ( spread operator ... y métodos de vectores)
@@ -134,6 +135,66 @@ if (btnLimpiar1) {
 
 
 // Ejercicio N°3
+//captura de elementos
+const btnA = document.getElementById('btn-A');
+const btnF = document.getElementById('btn-F');
+const btnLimpiar2 = document.getElementById('btn-limpiar2');
+const resultadosDiv3A = document.getElementById('ejercicio3-resultados-Aprobados');
+const resultadosDiv3F = document.getElementById('ejercicio3-resultados-Desaprobados');
+
+//filtro de aprobados
+const manejarAprobados = () => {
+    resultadosDiv3A.innerHTML = '';
+    resultadosDiv3F.innerHTML = '';
+
+    const alumnosAprobados = obtenerAprobados(alumnos);
+
+    console.log("\nEjercicio 3: Aprobados ");
+    console.log(alumnosAprobados);
+
+    const itemsHTML = obtenerHTMLItemsFiltrados(alumnosAprobados);
+    let htmlContent = `<h3>Alumnos Aprobados (${alumnosAprobados.length})</h3>`;
+
+    htmlContent += (alumnosAprobados.length > 0)
+        ? `<ul>${itemsHTML}</ul>`
+        : `<p>No hay alumnos aprobados (Nota > 5).</p>`;
+
+    resultadosDiv3A.innerHTML = htmlContent;
+};
+
+//filtro desaprobados
+const manejarDesaprobados = () => {
+    resultadosDiv3A.innerHTML = '';
+    resultadosDiv3F.innerHTML = '';
+
+    const alumnosDesaprobados = obtenerDesaprobados(alumnos);
+
+    console.log("\nEjercicio 3: Desaprobados");
+    console.log(alumnosDesaprobados);
+
+    const itemsHTML = obtenerHTMLItemsFiltrados(alumnosDesaprobados);
+    let htmlContent = `<h3>Alumnos Desaprobados (${alumnosDesaprobados.length})</h3>`;
+
+    htmlContent += (alumnosDesaprobados.length > 0)
+        ? `<ul>${itemsHTML}</ul>`
+        : `<p>No hay alumnos desaprobados (Nota <= 5).</p>`;
+
+    resultadosDiv3F.innerHTML = htmlContent;
+};
+
+if (btnA) {
+    btnA.addEventListener('click', manejarAprobados);
+}
+if (btnF) {
+    btnF.addEventListener('click', manejarDesaprobados);
+}
+if (btnLimpiar2) {
+    btnLimpiar2.addEventListener('click', () => {
+        resultadosDiv3A.innerHTML = '';
+        resultadosDiv3F.innerHTML = '';
+    });
+}
+
 // Ejercicio N°4
 // Ejercicio N°5
 // Ejercicio N°6

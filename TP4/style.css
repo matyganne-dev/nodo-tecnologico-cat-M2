@@ -7,7 +7,7 @@
     --color-success: #28a745;
     --color-failure: #dc3545;
     --font-family: 'Arial', sans-serif;
-    
+
     /* Variables de Botones */
     --color-button-primary-bg: #ffffff;
     --color-button-primary-text: #000000;
@@ -92,9 +92,28 @@ main {
             padding: 10px;
             border: 2px solid var(--color-border-dark);
             background-color: var(--color-background);
-            min-height: 250px;
             border-radius: 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            width: 500px;
+            height: 270px;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 3px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: var(--color-background);
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #c1c1c1;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: #a8a8a8;
+            }
+
             & .placeholder-text {
                 color: var(--color-text-secondary);
                 font-style: italic;
@@ -103,9 +122,18 @@ main {
             }
         }
 
+        #ejercicio3-resultados-Aprobados {
+            border: 2px solid var(--color-success);
+        }
+
+        #ejercicio3-resultados-Desaprobados {
+            border: 2px solid var(--color-failure);
+        }
     }
 
-    .action-button {
+    .action-button,
+    .action-button-A,
+    .action-button-F {
         background-color: var(--color-button-primary-bg);
         color: var(--color-button-primary-text);
 
@@ -113,10 +141,10 @@ main {
         padding: 10px 20px;
         cursor: pointer;
         border-radius: 0;
-        transition: background-color 0.3s, color 0.3s; 
+        transition: background-color 0.3s, color 0.3s;
 
         &:hover {
-            background-color: #e0e0e0; 
+            background-color: #e0e0e0;
             border-color: #000000;
         }
 
@@ -127,7 +155,30 @@ main {
             padding: 10px 0;
         }
     }
-    
+
+    .action-button-A {
+        background-color: var(--color-success);
+        color: var(--color-button-secondary-text);
+
+        &:hover {
+            background-color: #28a74698;
+            border-color: #000000;
+            border: 1px solid var(--color-success);
+        }
+    }
+
+    .action-button-F {
+        background-color: var(--color-failure);
+        color: var(--color-button-secondary-text);
+
+
+        &:hover {
+            background-color: #dc354598;
+            border-color: #000000;
+            border: 1px solid var(--color-failure);
+        }
+    }
+
     .secondary-button {
         background-color: var(--color-button-secondary-bg);
         color: var(--color-button-secondary-text);
