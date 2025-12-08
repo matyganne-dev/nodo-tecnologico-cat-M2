@@ -3,6 +3,8 @@
 import { mostrarNombreAlumno, obtenerHTMLItemsListado } from './modelo.js';
 import { obtenerAprobados, obtenerDesaprobados, obtenerHTMLItemsFiltrados } from './modelo.js';
 import { obtenerHTMLItemsOrdenados, ordenarNotaMenorMayor } from './modelo.js';
+import { buscarAlumnoDni } from './modelo.js';
+
 /*
 Ejercicio Nro. 18: ( spread operator ... y métodos de vectores)
 */
@@ -232,4 +234,54 @@ if (btnLimpiar4) {
 }
 
 // Ejercicio N°5
+
+const btnBuscar = document.getElementById('btn-buscar');
+const inputDNI = document.getElementById('input-dni');
+const btnLimpiar5 = document.getElementById('btn-limpiar5');
+const resultadosDiv5 = document.getElementById('ejercicio5-resultados');
+
+// Arrow function para manejar el evento del botón
+const manejarBusqueda = () => {
+    resultadosDiv5.innerHTML = '';
+    const dniBuscado = inputDNI.value.trim();
+
+    if (dniBuscado.length === 0) {
+        resultadosDiv5.innerHTML = `<p class="error">Por favor, ingrese un DNI.</p>`;
+        return;
+    }
+
+    // Obtener el alumno buscado
+    const alumnoEncontrado = buscarAlumnoDni(alumnos, dniBuscado);
+
+    // Mostrar resultado por consola
+    console.log(`\nEjercicio 5: Busqueda por DNI: ${dniBuscado}`);
+    console.log(alumnoEncontrado);
+
+    // Renderizado con el operador ternario
+    let htmlContent = `<h3>Resultado de Búsqueda</h3>`;
+
+    htmlContent += (alumnoEncontrado)
+        ? `<div class="alumno-card">
+            <p>¡Alumno Encontrado!</p>
+            <ul>
+                <li>DNI: ${alumnoEncontrado.dni}</li>
+                <li>Nombre: ${alumnoEncontrado.nombre} ${alumnoEncontrado.apellido}</li>
+                <li>Nota Final: ${alumnoEncontrado.nota_final}</li>
+            </ul>
+           </div>`
+        : `<p class="error">Alumno con DNI ${dniBuscado} no encontrado.</p>`;
+
+    // agregar en el DOM
+    resultadosDiv5.innerHTML = htmlContent;
+};
+
+if (btnBuscar) {
+    btnBuscar.addEventListener('click', manejarBusqueda);
+}
+if (btnLimpiar5) {
+    btnLimpiar5.addEventListener('click', () => {
+        resultadosDiv5.innerHTML = '';
+        inputDNI.value = ''; // Limpiar también el input
+    });
+}
 // Ejercicio N°6

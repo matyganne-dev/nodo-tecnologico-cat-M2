@@ -86,6 +86,10 @@ método “find” que tienen los vectores incorporados y busque algún alumno p
 Desee.
 */
 
+export const buscarAlumnoDni = (alumnos, dniBuscado) => {
+    // buscamos
+    return alumnos.find(alumno => alumno.dni === dniBuscado);
+}
 
 /*
 6)Sobre el vector Total de alumnos, deseamos “contabilizar” la cantidad de alumnos aprobados, es
