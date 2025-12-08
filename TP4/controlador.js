@@ -2,7 +2,7 @@
 
 import { mostrarNombreAlumno, obtenerHTMLItemsListado } from './modelo.js';
 import { obtenerAprobados, obtenerDesaprobados, obtenerHTMLItemsFiltrados } from './modelo.js';
-
+import { obtenerHTMLItemsOrdenados, ordenarNotaMenorMayor } from './modelo.js';
 /*
 Ejercicio Nro. 18: ( spread operator ... y métodos de vectores)
 */
@@ -196,5 +196,40 @@ if (btnLimpiar2) {
 }
 
 // Ejercicio N°4
+
+const btnSort = document.getElementById('btn-sort');
+const btnLimpiar4 = document.getElementById('btn-limpiar4');
+const resultadosDiv4 = document.getElementById('ejercicio4-resultados');
+
+const manejarOrdenamiento = () => {
+    resultadosDiv4.innerHTML = '';
+
+    // Obtener el vector ordenado
+    const alumnosOrdenados = ordenarNotaMenorMayor(alumnos);
+
+    // Mostrar el vector ordenado por consola
+    console.log("\nEjercicio 4: Alumnos Ordenados por Nota menor a mayor");
+    console.log(alumnosOrdenados);
+
+    //Generacion de HTML para el DOM
+    const itemsHTML = obtenerHTMLItemsOrdenados(alumnosOrdenados);
+    let htmlContent = `<h3>Listado Ordenado por Nota (Menor a Mayor)</h3>`;
+
+    htmlContent += (alumnosOrdenados.length > 0)
+        ? `<ol>${itemsHTML}</ol>`
+        : `<p>Error: No se pudo realizar el ordenamiento.</p>`;
+
+    resultadosDiv4.innerHTML = htmlContent;
+};
+
+if (btnSort) {
+    btnSort.addEventListener('click', manejarOrdenamiento);
+}
+if (btnLimpiar4) {
+    btnLimpiar4.addEventListener('click', () => {
+        resultadosDiv4.innerHTML = '';
+    });
+}
+
 // Ejercicio N°5
 // Ejercicio N°6

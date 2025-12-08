@@ -65,6 +65,20 @@ export const obtenerHTMLItemsFiltrados = (alumnos) => {
 datos de todos esos alumnos por nota de menor a mayor.
 */
 
+export const ordenarNotaMenorMayor = (alumnos) => {
+    //creamos copia para no modificar la original
+    const alumnosCopia = [...alumnos];
+    return alumnosCopia.sort((a, b) => a.nota_final - b.nota_final);
+}
+
+export const obtenerHTMLItemsOrdenados = (alumnosOrdenados) => {
+    let htmlContent = '';
+    alumnosOrdenados.forEach((alumno) => {
+        htmlContent += `<li>${alumno.apellido} ${alumno.nombre} Nota: ${alumno.nota_final}</li>`;
+    });
+
+    return htmlContent;
+}
 
 /*
 5)Sobre el vector Total de alumnos, realice una búsqueda de los siguientes alumnos aplicando el
