@@ -4,6 +4,8 @@ import { mostrarNombreAlumno, obtenerHTMLItemsListado } from './modelo.js';
 import { obtenerAprobados, obtenerDesaprobados, obtenerHTMLItemsFiltrados } from './modelo.js';
 import { obtenerHTMLItemsOrdenados, ordenarNotaMenorMayor } from './modelo.js';
 import { buscarAlumnoDni } from './modelo.js';
+import { contarAprobados, contarAprobadosTernario } from './modelo.js';
+
 
 /*
 Ejercicio Nro. 18: ( spread operator ... y métodos de vectores)
@@ -240,7 +242,7 @@ const inputDNI = document.getElementById('input-dni');
 const btnLimpiar5 = document.getElementById('btn-limpiar5');
 const resultadosDiv5 = document.getElementById('ejercicio5-resultados');
 
-// Arrow function para manejar el evento del botón
+// function para manejar el evento del boton
 const manejarBusqueda = () => {
     resultadosDiv5.innerHTML = '';
     const dniBuscado = inputDNI.value.trim();
@@ -284,4 +286,53 @@ if (btnLimpiar5) {
         inputDNI.value = ''; // Limpiar también el input
     });
 }
+
+
+
 // Ejercicio N°6
+
+const btnContabilizar = document.getElementById('btn-contabilizar');
+const btnLimpiar6 = document.getElementById('btn-limpiar6');
+const resultadosDiv6 = document.getElementById('ejercicio6-resultados');
+
+const manejarContabilizacion = () => {
+    resultadosDiv6.innerHTML = '';
+
+    // Contabilizar usando if/else 
+    const totalIfElse = contarAprobados(alumnos);
+
+    // Contabilizar usando ternario 
+    const totalTernario = contarAprobadosTernario(alumnos);
+
+    // Mostrar resultados por consola
+    console.log(`\nEjercicio 6: Contabilización con REDUCE (Nota > 5)`);
+    console.log(`a. Total Aprobados (If/Else): ${totalIfElse}`);
+    console.log(`b. Total Aprobados (Ternario): ${totalTernario}`);
+
+    // Renderizado en el DOM (Mostrando que ambos son iguales)
+    let htmlContent = `<h3>Resultados de Contabilización</h3>`;
+
+    if (totalIfElse === totalTernario) {
+        htmlContent += `
+            <p>Resultado Verificado: Ambas formas de implementación llegaron al mismo resultado.</p>
+            <ul>
+                <li>Total Aprobados (Usando If/Else): <strong>${totalIfElse}</strong></li>
+                <li>Total Aprobados (Usando Operador Ternario): <strong>${totalTernario}</strong></li>
+            </ul>
+        `;
+    } else {
+        htmlContent += `<p class="error">Error: Los resultados de If/Else y Ternario no coinciden.</p>`;
+    }
+
+    resultadosDiv6.innerHTML = htmlContent;
+};
+
+
+if (btnContabilizar) {
+    btnContabilizar.addEventListener('click', manejarContabilizacion);
+}
+if (btnLimpiar6) {
+    btnLimpiar6.addEventListener('click', () => {
+        resultadosDiv6.innerHTML = '';
+    });
+}

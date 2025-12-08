@@ -105,3 +105,20 @@ vectores incorporados para contabilizar. Realice esto de dos formas
 Ambas formas deben llegar al mismo resultado, únicamente que se implementaron de dos formas
 diferentes.
 */
+
+export const contarAprobados = (alumnos) => {
+    return alumnos.reduce((acumulador, alumno) => {
+        if (alumno.nota_final > 5) {
+            acumulador = acumulador + 1;
+        } else {
+            acumulador = acumulador;
+        }
+        return acumulador;
+    }, 0);
+}
+
+export const contarAprobadosTernario = (alumnos) => {
+    return alumnos.reduce((acumulador, alumno) => {
+        return alumno.nota_final > 5 ? acumulador + 1 : acumulador;
+    }, 0);
+}
