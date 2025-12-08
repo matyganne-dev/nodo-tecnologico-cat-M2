@@ -36,7 +36,7 @@ const cohorte04 = [
 ];
 
 
-const alumnos = [...cohorte01, ...cohorte02, ...cohorte03, ...cohorte04];
+
 
 // Ejercicio N°1
 
@@ -94,6 +94,45 @@ if (btnLimpiar) {
 }
 
 // Ejercicio N°2
+
+//usames spread operator para empaquetar los vectores
+const alumnos = [...cohorte01, ...cohorte02, ...cohorte03, ...cohorte04];
+
+const btnListar = document.getElementById('btn-listar');
+const btnLimpiar1 = document.getElementById('btn-limpiar1');
+const resultadosDiv2 = document.getElementById('ejercicio2-resultados');
+
+const listarAlumnos = (cohortesUnidas, nombre) => {
+    // Limpiar resultados Anteriores
+    resultadosDiv2.innerHTML = '';
+
+    // Mostrar en consola como pide el ejercicio
+    mostrarNombreAlumno(cohortesUnidas, nombre);
+
+    const itemsHTML = obtenerHTMLItemsListado(cohortesUnidas);
+
+    let htmlContent = `<h3>Lista ${nombre}</h3>`;
+
+    //Usamos ternario para avisar sobre si el vector esta vacio
+    htmlContent += (cohortesUnidas.length > 0)
+        ? `<ul>${itemsHTML}</ul>`
+        : `<p>Error: Vector vacío.</p>`;
+
+    resultadosDiv2.innerHTML = htmlContent;
+};
+
+if (btnListar) {
+    btnListar.addEventListener('click', () => {
+        listarAlumnos(alumnos, "completa");
+    });
+}
+if (btnLimpiar1) {
+    btnLimpiar1.addEventListener('click', () => {
+        resultadosDiv2.innerHTML = '';
+    });
+}
+
+
 // Ejercicio N°3
 // Ejercicio N°4
 // Ejercicio N°5
