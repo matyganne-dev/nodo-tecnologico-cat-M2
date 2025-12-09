@@ -69,6 +69,7 @@ const listarCohorte = (cohorteVector, nombre) => {
         ? `<ul>${itemsHTML}</ul>`
         : `<p>Error: Vector vacío.</p>`;
 
+    // Mostrar los resultados en la interfaz
     resultadosDiv1.innerHTML = htmlContent;
 };
 
@@ -116,6 +117,7 @@ const listarAlumnos = (cohortesUnidas, nombre) => {
 
     const itemsHTML = obtenerHTMLItemsListado(cohortesUnidas);
 
+    //Contenido por defecto
     let htmlContent = `<h3>Lista ${nombre}</h3>`;
 
     //Usamos ternario para avisar sobre si el vector esta vacio
@@ -123,6 +125,7 @@ const listarAlumnos = (cohortesUnidas, nombre) => {
         ? `<ul>${itemsHTML}</ul>`
         : `<p>Error: Vector vacío.</p>`;
 
+    // Mostrar los resultados en la interfaz
     resultadosDiv2.innerHTML = htmlContent;
 };
 
@@ -163,6 +166,7 @@ const manejarAprobados = () => {
         ? `<ul>${itemsHTML}</ul>`
         : `<p>No hay alumnos aprobados (Nota > 5).</p>`;
 
+    // Mostrar los resultados en la interfaz
     resultadosDiv3A.innerHTML = htmlContent;
 };
 
@@ -183,6 +187,7 @@ const manejarDesaprobados = () => {
         ? `<ul>${itemsHTML}</ul>`
         : `<p>No hay alumnos desaprobados (Nota <= 5).</p>`;
 
+    // Mostrar los resultados en la interfaz
     resultadosDiv3F.innerHTML = htmlContent;
 };
 
@@ -223,6 +228,7 @@ const manejarOrdenamiento = () => {
         ? `<ol>${itemsHTML}</ol>`
         : `<p>Error: No se pudo realizar el ordenamiento.</p>`;
 
+    // Mostrar los resultados en la interfaz
     resultadosDiv4.innerHTML = htmlContent;
 };
 
@@ -273,7 +279,7 @@ const manejarBusqueda = () => {
            </div>`
         : `<p class="error">Alumno con DNI ${dniBuscado} no encontrado.</p>`;
 
-    // agregar en el DOM
+    // Mostrar los resultados en la interfaz
     resultadosDiv5.innerHTML = htmlContent;
 };
 
@@ -283,7 +289,7 @@ if (btnBuscar) {
 if (btnLimpiar5) {
     btnLimpiar5.addEventListener('click', () => {
         resultadosDiv5.innerHTML = '';
-        inputDNI.value = ''; // Limpiar también el input
+        inputDNI.value = ''; // Limpiar el input
     });
 }
 
@@ -324,6 +330,7 @@ const manejarContabilizacion = () => {
         htmlContent += `<p class="error">Error: Los resultados de If/Else y Ternario no coinciden.</p>`;
     }
 
+    // Mostrar los resultados en la interfaz
     resultadosDiv6.innerHTML = htmlContent;
 };
 
