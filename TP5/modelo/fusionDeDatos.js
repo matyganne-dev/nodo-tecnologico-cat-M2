@@ -67,47 +67,60 @@ export const fnGenerarVectorSimple = (Paises) => {
 export const fnEjercitarDestructuring = (paises) => {
     // Mostramos en consola solo los primeros 3 para no saturar la consola y dar la muestra
     // De caso contrario solo seria cambiar muestra por paises
-    const muestra = paises.slice(0, 3);
+    const muestra = paises.slice(0, 1);
 
-    console.log("\n\nINCISO A: Destructuring Simple");
-    paises.forEach(pais => {
+    console.log("\nINCISO A: Destructuring Simple");
+    muestra.forEach(pais => {
         const { name, population, flags } = pais;
         console.log(`Nombre: ${name.common} | Pob: ${population} | Bandera: ${flags.png}`);
     });
 
-    console.log("\n\nINCISO B: Destructuring con Alias");
-    paises.forEach(pais => {
+    console.log("\nINCISO B: Destructuring con Alias");
+    muestra.forEach(pais => {
         const { name: { common: nombre }, population: poblacion, flags: { png: bandera } } = pais;
         console.log(`País: ${nombre} | Habitantes: ${poblacion} | Link: ${bandera}`);
     });
 
-    console.log("\n\nINCISO D: Destructuring Array (Capital)");
-    paises.forEach(pais => {
+    console.log("\nINCISO D: Destructuring Array (Capital)");
+    muestra.forEach(pais => {
         const [capital = "Sin Datos"] = pais.capital || [];
         console.log(`Capital: ${capital}`);
     });
 
-    console.log("\n\nINCISO C: Destructuring en Parámetros");
-    paises.forEach(({ name: { common }, population }) => {
+    console.log("\nINCISO C: Destructuring en Parámetros");
+    muestra.forEach(({ name: { common }, population }) => {
         console.log(`Directo -> ${common}: ${population}`);
     });
 };
 
-//Punto 3
-export const fnEjercitarSpread = async (paisesRegion1, paisesRegion2) => {
-    // Inciso E: Combinar dos regiones
-    const regionesCombinadas = [...paisesRegion1, ...paisesRegion2];
-    console.log("INCISO E: Spread Operator (Combinar Regiones)");
-    console.log(`Total países combinados: ${regionesCombinadas.length}`);
+// Punto 3 - Inciso E: Combinación de regiones
+export const fnProcesarIncisoE = (paisesBase, paisesNuevos, nombreBase, nombreNueva) => {
+    // 1. Unimos los datos brutos usando Spread Operator
+    const unionBruta = [...paisesBase, ...paisesNuevos];
 
-    // Inciso F: Objeto simplificado con Spread y Destructuring
-    console.log("INCISO F: Objeto Simplificado (Un país)");
-    const unPais = regionesCombinadas[0]; // Seleccionamos el primero
+    // 2. Limpiamos los datos y los dejamos mas simple
+    const unionLimpia = fnGenerarVectorSimple(unionBruta);
 
-    // Sacamos los datos y creamos el nuevo objeto
-    const { name: { common: nombre }, population: poblacion, flags: { png: bandera } } = unPais;
-    const [capital = "N/A"] = unPais.capital || [];
+    console.log("RESULTADO INCISO E (SPREAD OPERATOR)");
+    console.log(`Región Base (${nombreBase}):`, paisesBase.length, "países");
+    console.log(`Región Nueva (${nombreNueva}):`, paisesNuevos.length, "países");
+    console.log(`Total combinado: ${unionLimpia.length} países`);
 
-    const objetoSimplificado = { nombre, capital, poblacion, bandera };
-    console.log(objetoSimplificado);
+    // 3. Mostramos el listado ya procesado y limpio
+    console.log("Listado de la unión (Datos Simplificados):");
+    // mostramos en formato tabla
+    console.table(unionLimpia);
+
+    // Devolvemos el bruto
+    return unionBruta; 
+};
+
+// Punto 3 - Inciso F: Objeto simplificado
+export const fnEjecutarIncisoF = (listaCombinada) => {
+    // Aquí también limpiamos antes de mostrar para asegurar consistencia
+    const listaLimpia = fnGenerarVectorSimple(listaCombinada);
+    const paisSeleccionado = listaLimpia[0];
+
+    console.log("--- RESULTADO INCISO F (OBJETO SIMPLIFICADO) ---");
+    console.log("Primer país del listado unido (Resumen):", paisSeleccionado);
 };

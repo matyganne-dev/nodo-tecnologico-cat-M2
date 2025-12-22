@@ -45,6 +45,18 @@ body {
                     color: #fff;
                 }
             }
+
+            &.activo {
+                /* Verde para el de combinar */
+                border: 2px solid #28a745;
+                background-color: #d4edda;
+            }
+
+            &.seleccionado {
+                /* Azul para los continentes */
+                border: 2px solid #007bff;
+                background-color: #e7f1ff;
+            }
         }
     }
 }
