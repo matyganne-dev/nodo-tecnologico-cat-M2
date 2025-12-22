@@ -1,0 +1,69 @@
+import {endPointAfrica,endPointAmerica,endPointEuropa,endPointOceania,endPointAsia} from "./endPoint.js";
+import {fnRecuperarDatosEndPoint} from "./modelo.js";
+
+/* Funcion que se encargará de llamar
+la función de recuperar los datos de
+un EndPoint. Continente por continente.
+unificarlos a todos y devolver todos
+los paises juntos */
+
+
+export const fnUnirPaisesDelMundo = async ()=>{
+    
+    let paisesAfrica = await fnRecuperarDatosEndPoint(endPointAfrica);
+
+    let paisesEuropa = await fnRecuperarDatosEndPoint(endPointEuropa);
+
+    let paisesOceania = await fnRecuperarDatosEndPoint(endPointOceania);
+
+    let paisesAmerica = await fnRecuperarDatosEndPoint(endPointAmerica);
+
+    let paisesAsia = await fnRecuperarDatosEndPoint(endPointAsia);
+
+    /* Aqui voy a Unificar todos los Paises
+    del Mundo en un solo vector. 
+    usando un Concepto que vimos que 
+    se llama SpreadOperator => operador de propagacion 
+    
+    propagación de elementos de un vector. SpreadOperator => elementos de un vector.
+
+    */
+
+    const paisesMundo = [...paisesAfrica,...paisesAmerica,...paisesAsia,...paisesEuropa,...paisesOceania];
+
+    return paisesMundo;
+
+};
+
+
+/* La idea de esto es recorrer
+el vector complejo de Paises que
+viene originalmente de la API y convertir
+un objeto mucho mas legible y claro
+y adaptado a mis necesidades */
+
+export const fnGenerarVectorSimple = (Paises)=>{
+
+    const PaisesSimple = Paises.map(pais => {
+
+        /* Estoy haciendo destructuring */
+        const {area:superficie,population:poblacion,region:continente} = pais;
+
+        const {common:nombreGenerico,official:nombreOficial} = pais.name;
+
+        const {png,svg} = pais.flags;
+
+        /* a partir de esas constantes me
+        estoy creando un objeto mas simple */
+
+        const paisSimple = {nombreGenerico,nombreOficial,superficie,poblacion,continente,png,svg};
+
+        // este es el return del map //
+        return paisSimple;
+
+    });
+
+    // este es el return de la función //
+    return PaisesSimple;
+
+};

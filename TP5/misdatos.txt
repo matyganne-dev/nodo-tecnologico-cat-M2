@@ -1,0 +1,47 @@
+Daniel Maldonado
+Telefono: 3834402862
+
+
+    - variables
+    - constantes
+    - leer datos desde el teclado "prompt"
+    - lógica de programación
+    - estructuras condicionales
+        * if
+        * switch
+        * operador ternario
+    - estructuras repetitivas
+        * for
+        * while
+    - LOGICA DE programación
+
+    - Manejo del DOM => JavaScript Nativo => document.querySelector()
+    - eventos => load, onclick
+
+    - OBJETOS LITERALES:
+        - {atributo1:valor1,atributo2:valor2}
+
+    - PERSISTENCIA DE DATOS EN EL NAVEGADOR
+        * sessionStorage => se persiste y dura mientras la pagina esta activa
+        * localStorage => se persiste y dura el tiemo que yo necesite
+
+    - VECTORES:
+        * vectores simples
+        * vectores de objetos LITERALES
+        * forEach
+        * map
+        * filter
+        * find
+        * some
+        * every
+        * reduce
+
+    - PROCESOS ASINCRONOS / PROMESAS
+
+        - fetch => consulta datos desde una API
+
+        - await = > proceso que los encierra es async
+
+        - renderizacion del DOM
+
+    - 26 CLASES => 
