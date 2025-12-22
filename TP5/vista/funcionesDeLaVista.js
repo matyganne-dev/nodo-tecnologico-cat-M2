@@ -1,49 +1,35 @@
+export const fnGenerarContenedores = (PaisesSimples) => {
+    return PaisesSimples.map(pais => {
+        const contenedorPais = document.createElement("article");
+        contenedorPais.classList.add("pais-card-moderna");
 
+        contenedorPais.innerHTML = `
+            <div class="notch-top-right">
+                <span class="texto-notch">${pais.continente}</span>
+            </div>
 
-/* El objetivo de esta función es tomar todos los paises del Vector Simple. transformar cada pais 
-en un elemento visual del DOM
-*/
-export const fnGenerarContenedores = (PaisesSimples) =>{
+            <div class="background-bandera" style="background-image: url('${pais.png}');"></div>
+            
+            <div class="overlay-vidrio">
+                <div class="pob-chip">
+                    <span>${(pais.poblacion / 1000000).toFixed(1)}M</span>
+                </div>
 
-    const elementosDelDOM = PaisesSimples.map(pais =>{
+                <div class="info-secundaria">
+                    <p>capital: <strong>${pais.capital}</strong></p>
+                    <p>oficial: <strong>${pais.nombreOficial}</strong></p>
+                </div>
+            </div>
 
-        /* aqui dentro voy a construir el div por cada pais */
-
-        const contenedorPais = document.createElement("div");
-
-        const tituloDelPais = document.createElement("h2");
-        tituloDelPais.textContent = pais.nombreOficial;
-
-        const tituloSuperficie = document.createElement("h3");
-        tituloSuperficie.textContent = pais.superficie;
-
-        const imagenBandera = document.createElement("img");
-        imagenBandera.src = pais.png;
-
-        imagenBandera.onclick = ()=>{
-
-            console.log(`La Poblacion de ${pais.nombreOficial} es de ${pais.poblacion}`);
-
-        };
-
-        const linea = document.createElement("hr");
-
-        contenedorPais.appendChild(tituloDelPais);
-        contenedorPais.appendChild(tituloSuperficie);
-        contenedorPais.appendChild(imagenBandera);
-        contenedorPais.appendChild(linea);
-
-        // este returnes pais x pais
-        return (contenedorPais);
+            <div class="notch-bottom-left">
+                <span class="nombre-texto">${pais.nombreGenerico}</span>
+            </div>
+        `;
+        return contenedorPais;
     });
-
-    // este return es cuando termino map y todos estan corvertidos //
-    return elementosDelDOM;
 };
 
-export const render = (elementosDelDOM,idContendor)=>{
-    
-    // con esto se renderiza en el dom //
-    elementosDelDOM.forEach(elemento =>idContendor.appendChild(elemento));
-
+export const render = (elementosDelDOM, idContenedor) => {
+    idContenedor.innerHTML = "";
+    elementosDelDOM.forEach(elemento => idContenedor.appendChild(elemento));
 };
