@@ -3,11 +3,10 @@ import { fnRecuperarDatosEndPoint } from "../modelo/modelo.js";
 import { endPointAfrica, endPointAmerica, endPointAsia, endPointEuropa, endPointOceania } from "../modelo/endPoint.js";
 import { fnGenerarContenedores, render, fnGenerarTabla } from "../vista/funcionesDeLaVista.js";
 
-// VARIABLES GLOBALES (Scope correcto para que cargarYMostrar las vea)
 let modoCombinarActivo = false;
 let regionAncla = null;
 let nombreAncla = "";
-let vistaActual = "cards"; // [cite: 88, 89]
+let vistaActual = "cards";
 
 const limpiarSeleccionContinentes = () => {
     document.querySelectorAll(".card-mini").forEach(card => {
@@ -19,7 +18,7 @@ const limpiarSeleccionContinentes = () => {
 window.onload = async () => {
     const idContenedorPrincipal = document.querySelector("#idContenedorPrincipal");
     const btnCombinar = document.querySelector("#btn-modo-combinar");
-    const btnSwitch = document.querySelector("#btn-switch-vista"); // El botón que agregaste al HTML
+    const btnSwitch = document.querySelector("#btn-switch-vista");
 
     btnCombinar.onclick = () => {
         modoCombinarActivo = !modoCombinarActivo;
@@ -44,7 +43,7 @@ window.onload = async () => {
 
     const cargarYMostrar = async (fuenteDatos, nombreRegion, elementoClickeado) => {
         actualizarFondo(nombreRegion);
-        const datosBrutos = await fuenteDatos(); // [cite: 23, 28]
+        const datosBrutos = await fuenteDatos();
         let datosAMostrar;
 
         console.clear();
@@ -54,7 +53,7 @@ window.onload = async () => {
             elementoClickeado.classList.add("seleccionado");
             console.log(`REGIÓN: ${nombreRegion}`);
             console.log(`Cantidad de países encontrados: ${datosBrutos.length}`);
-            fnEjercitarDestructuring(datosBrutos); // [cite: 62]
+            fnEjercitarDestructuring(datosBrutos);
             datosAMostrar = datosBrutos;
         } else {
             if (!regionAncla) {
@@ -70,10 +69,10 @@ window.onload = async () => {
                 });
                 elementoClickeado.classList.add("seleccionado");
 
-                // Inciso E - Combinar regiones [cite: 77]
+                // Inciso E - Combinar regiones
                 datosAMostrar = fnProcesarIncisoE(regionAncla, datosBrutos, nombreAncla, nombreRegion);
 
-                // Inciso F - Objeto simplificado [cite: 79]
+                // Inciso F - Objeto simplificado
                 fnEjecutarIncisoF(datosAMostrar);
             }
         }
@@ -81,12 +80,12 @@ window.onload = async () => {
         const paisesSimples = fnGenerarVectorSimple(datosAMostrar);
         idContenedorPrincipal.innerHTML = "";
 
-        // LÓGICA DE ALTERNANCIA DE VISTA (PUNTO 04) [cite: 86, 89]
+        // Alternar la vistas
         const elementos = (vistaActual === "cards")
             ? fnGenerarContenedores(paisesSimples)
             : fnGenerarTabla(paisesSimples);
 
-        render(elementos, idContenedorPrincipal); // [cite: 88]
+        render(elementos, idContenedorPrincipal);
     };
 
     // BOTONES DE CONTINENTES
@@ -104,7 +103,7 @@ window.onload = async () => {
         cargarYMostrar(fnUnirPaisesDelMundo, "Mundo Completo", this);
     };
 
-    // INTERRUPTOR DE VISTA (Asegúrate que el ID coincida con tu HTML)
+    // logica para alternar lo botones 
     if (btnSwitch) {
         btnSwitch.onclick = () => {
            

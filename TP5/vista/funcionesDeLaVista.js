@@ -1,6 +1,8 @@
+
+//Formato card
 export const fnGenerarContenedores = (PaisesSimples) => {
     return PaisesSimples.map(pais => {
-        // Lógica para formatear la población dinámicamente
+        // Lógica para formatear la población dinámicamente - repetir en la tabla
         const formatearPoblacion = (num) => {
             if (num >= 1000000) {
                 return (num / 1000000).toFixed(1) + "M";
@@ -46,6 +48,7 @@ export const render = (elementosDelDOM, idContenedor) => {
     elementosDelDOM.forEach(elemento => idContenedor.appendChild(elemento));
 };
 
+//Formato Tabla
 export const fnGenerarTabla = (PaisesSimples) => {
     const tabla = document.createElement("table");
     tabla.classList.add("tabla-glass");
