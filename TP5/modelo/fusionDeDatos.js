@@ -1,5 +1,5 @@
-import {endPointAfrica,endPointAmerica,endPointEuropa,endPointOceania,endPointAsia} from "./endPoint.js";
-import {fnRecuperarDatosEndPoint} from "./modelo.js";
+import { endPointAfrica, endPointAmerica, endPointEuropa, endPointOceania, endPointAsia } from "./endPoint.js";
+import { fnRecuperarDatosEndPoint } from "./modelo.js";
 
 /* Funcion que se encargará de llamar
 la función de recuperar los datos de
@@ -8,8 +8,8 @@ unificarlos a todos y devolver todos
 los paises juntos */
 
 
-export const fnUnirPaisesDelMundo = async ()=>{
-    
+export const fnUnirPaisesDelMundo = async () => {
+
     let paisesAfrica = await fnRecuperarDatosEndPoint(endPointAfrica);
 
     let paisesEuropa = await fnRecuperarDatosEndPoint(endPointEuropa);
@@ -29,7 +29,7 @@ export const fnUnirPaisesDelMundo = async ()=>{
 
     */
 
-    const paisesMundo = [...paisesAfrica,...paisesAmerica,...paisesAsia,...paisesEuropa,...paisesOceania];
+    const paisesMundo = [...paisesAfrica, ...paisesAmerica, ...paisesAsia, ...paisesEuropa, ...paisesOceania];
 
     return paisesMundo;
 
@@ -42,21 +42,24 @@ viene originalmente de la API y convertir
 un objeto mucho mas legible y claro
 y adaptado a mis necesidades */
 
-export const fnGenerarVectorSimple = (Paises)=>{
+export const fnGenerarVectorSimple = (Paises) => {
 
     const PaisesSimple = Paises.map(pais => {
 
         /* Estoy haciendo destructuring */
-        const {area:superficie,population:poblacion,region:continente} = pais;
+        const { area: superficie, population: poblacion, region: continente } = pais;
 
-        const {common:nombreGenerico,official:nombreOficial} = pais.name;
+        const { common: nombreGenerico, official: nombreOficial } = pais.name;
 
-        const {png,svg} = pais.flags;
+        const { png, svg } = pais.flags;
+
+        // Extraemos la primera capital y asignamos valor por defecto
+        const [primeraCapital = "No posee capital"] = pais.capital || [];
 
         /* a partir de esas constantes me
         estoy creando un objeto mas simple */
 
-        const paisSimple = {nombreGenerico,nombreOficial,superficie,poblacion,continente,png,svg};
+        const paisSimple = { nombreGenerico, nombreOficial, superficie, poblacion, continente, png, svg, capital: primeraCapital };
 
         // este es el return del map //
         return paisSimple;
