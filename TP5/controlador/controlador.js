@@ -17,7 +17,7 @@ window.onload = async ()=>{
 
     const PaisesSimples = fnGenerarVectorSimple(Paises); // este los transforma y devuelve un vector de paises mas simple
 
-    console.log(Paises);
+    // console.log(Paises);
 
     console.log(PaisesSimples);
 
