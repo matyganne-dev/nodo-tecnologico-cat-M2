@@ -1,5 +1,17 @@
 export const fnGenerarContenedores = (PaisesSimples) => {
     return PaisesSimples.map(pais => {
+        // Lógica para formatear la población dinámicamente
+        const formatearPoblacion = (num) => {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + "M";
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(0) + "K";
+            } else {
+                // Para países chiquitos
+                return num;
+            }
+        };
+
         const contenedorPais = document.createElement("article");
         contenedorPais.classList.add("pais-card-moderna");
 
@@ -12,7 +24,7 @@ export const fnGenerarContenedores = (PaisesSimples) => {
             
             <div class="overlay-vidrio">
                 <div class="pob-chip">
-                    <span>${(pais.poblacion / 1000000).toFixed(1)}M</span>
+                    <span>${formatearPoblacion(pais.poblacion)}</span>
                 </div>
 
                 <div class="info-secundaria">
