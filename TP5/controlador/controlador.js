@@ -3,38 +3,6 @@ import {fnUnirPaisesDelMundo} from "../modelo/fusionDeDatos.js";
 import {fnGenerarVectorSimple} from "../modelo/fusionDeDatos.js";
 import {fnGenerarContenedores,render} from "../vista/funcionesDeLaVista.js";
 
-/* La idea de esto es recorrer
-el vector complejo de Paises que
-viene originalmente de la API y convertir
-un objeto mucho mas legible y claro
-y adaptado a mis necesidades */
-
-const fnGenerarVectorSimple = (Paises)=>{
-
-    const PaisesSimple = Paises.map(pais => {
-
-        /* Estoy haciendo destructuring */
-        const {area:superficie,population:poblacion,region:continente} = pais;
-
-        const {common:nombreGenerico,official:nombreOficial} = pais.name;
-
-        const {png,svg} = pais.flags;
-
-        /* a partir de esas constantes me
-        estoy creando un objeto mas simple */
-
-        const paisSimple = {nombreGenerico,nombreOficial,superficie,poblacion,continente,png,svg};
-
-        // este es el return del map //
-        return paisSimple;
-
-    });
-
-    // este es el return de la función //
-    return PaisesSimple;
-
-};
-
 window.onload = async ()=>{
 
     console.log(`aplication is running`);
