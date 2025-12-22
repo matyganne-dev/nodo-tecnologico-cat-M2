@@ -1,62 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@property --gradient_rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Orbitron", sans-serif;
     background: #131314;
-    min-height: 100vh;
+    min-height: 90vh;
     margin: 0;
     color: white;
+
+    #main-texts{
+        text-align: center;
+        margin: 5rem;
+    }
 
     #contenedor-botones {
         display: flex;
         justify-content: center;
-        gap: 20px;
-        margin-top: 20px;
-        padding: 20px;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 40px;
+        perspective: 1000px;
 
         article.card-mini {
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            width: 110px;
-            padding: 15px;
-            text-align: center;
+            --gradient_rotate: 0deg;
+            --border_width: 0.4rem;
+            --metal_01: rgb(200 200 220);
+            --metal_02: rgb(160 160 180);
+            --metal_03: rgb(120 120 140);
+            --metal_04: rgb(80 80 100);
+            --metal_05: rgb(40 40 60);
+            --metal_06: rgb(10 10 10);
+
+            position: relative;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+            border-top-right-radius: 100px;
+            border-bottom-left-radius: 0;
+            border: var(--border_width) solid transparent;
+
+            background: linear-gradient(0deg, rgb(10 10 10) 10%, rgb(40 40 50)) padding-box,
+                conic-gradient(from var(--gradient_rotate),
+                    rgb(from var(--metal_01) r g b / 0.5),
+                    rgb(from var(--metal_01) r g b / 0.0),
+                    rgb(from var(--metal_06) r g b / 0.0),
+                    rgb(from var(--metal_06) r g b / 1.0),
+                    rgb(from var(--metal_04) r g b / 0.5),
+                    rgb(from var(--metal_04) r g b / 0.0),
+                    rgb(from var(--metal_04) r g b / 1.0),
+                    rgb(from var(--metal_01) r g b / 0.5)) border-box;
+
+            animation: button_gradient_rotate 12s linear infinite;
+            transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: calc(-1 * var(--border_width));
+                z-index: -1;
+                border-radius: inherit;
+                background: conic-gradient(from var(--gradient_rotate),
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) padding-box,
+                    conic-gradient(from 0deg,
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) border-box;
+                animation: button_gradient_rotate 8s linear infinite reverse;
+                border: 0.15rem solid transparent;
+                opacity: 0.5;
+            }
 
             img {
-                width: 40px;
-                height: 40px;
-                margin-bottom: 8px;
-                opacity: 0.7;
+                width: 35px;
+                height: 35px;
+                filter: invert(1);
+                z-index: 2;
+                margin-bottom: 5px;
             }
 
             span {
-                display: block;
-                font-size: 13px;
-                font-weight: 600;
-                color: #444;
+                font-size: 0.825rem;
+                font-weight: 700;
+                color: #fff;
+                z-index: 2;
+                text-transform: uppercase;
+                letter-spacing: 1px;
             }
 
             &:hover {
-                background-color: #000;
-
-                img {
-                    filter: invert(1);
-                    opacity: 1;
-                }
-
-                span {
-                    color: #fff;
-                }
-            }
-
-            &.activo {
-                border: 2px solid #28a745;
-                background-color: #d4edda;
+                transform: scale(1.1);
+                filter: brightness(1.3);
             }
 
             &.seleccionado {
-                border: 2px solid #007bff;
-                background-color: #e7f1ff;
+                --metal_01: rgb(100 200 255);
+                --metal_03: rgb(0 100 255);
+                box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
+                background: conic-gradient(from var(--gradient_rotate),
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) padding-box,
+                    conic-gradient(from 0deg,
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) border-box;
+            }
+
+            &.activo {
+                --metal_01: rgb(150 255 150);
+                --metal_03: rgb(40 167 69);
+                box-shadow: 0 0 30px rgba(40, 167, 69, 0.5);
+                background: conic-gradient(from var(--gradient_rotate),
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) padding-box,
+                    conic-gradient(from 0deg,
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) border-box;
             }
         }
     }
@@ -71,15 +145,12 @@ body {
         article.pais-card-moderna {
             position: relative;
             height: 220px;
-            border-top-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 0;
-            overflow: hidden;
+            /* overflow: hidden; */
             background: #131314;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
+
             &:hover {
                 .overlay-vidrio {
                     opacity: 1;
@@ -175,5 +246,15 @@ body {
                 }
             }
         }
+    }
+}
+
+@keyframes button_gradient_rotate {
+    from {
+        --gradient_rotate: 0deg;
+    }
+
+    to {
+        --gradient_rotate: 360deg;
     }
 }
