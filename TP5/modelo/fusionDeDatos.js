@@ -70,3 +70,33 @@ export const fnGenerarVectorSimple = (Paises) => {
     return PaisesSimple;
 
 };
+
+// Punto 2
+export const fnEjercitarDestructuring = (paises) => {
+    // Mostramos en consola solo los primeros 3 para no saturar la consola y dar la muestra
+    // De caso contrario solo seria cambiar muestra por paises
+    const muestra = paises.slice(0, 3);
+
+    console.log("\n\nINCISO A: Destructuring Simple");
+    paises.forEach(pais => {
+        const { name, population, flags } = pais;
+        console.log(`Nombre: ${name.common} | Pob: ${population} | Bandera: ${flags.png}`);
+    });
+
+    console.log("\n\nINCISO B: Destructuring con Alias");
+    paises.forEach(pais => {
+        const { name: { common: nombre }, population: poblacion, flags: { png: bandera } } = pais;
+        console.log(`País: ${nombre} | Habitantes: ${poblacion} | Link: ${bandera}`);
+    });
+
+    console.log("\n\nINCISO D: Destructuring Array (Capital)");
+    paises.forEach(pais => {
+        const [capital = "Sin Datos"] = pais.capital || [];
+        console.log(`Capital: ${capital}`);
+    });
+
+    console.log("\n\nINCISO C: Destructuring en Parámetros");
+    paises.forEach(({ name: { common }, population }) => {
+        console.log(`Directo -> ${common}: ${population}`);
+    });
+};

@@ -1,5 +1,5 @@
 
-import { fnUnirPaisesDelMundo, fnGenerarVectorSimple } from "../modelo/fusionDeDatos.js";
+import { fnUnirPaisesDelMundo, fnGenerarVectorSimple, fnEjercitarDestructuring } from "../modelo/fusionDeDatos.js";
 import { fnRecuperarDatosEndPoint } from "../modelo/modelo.js";
 import { endPointAfrica, endPointAmerica, endPointAsia, endPointEuropa, endPointOceania } from "../modelo/endPoint.js";
 import { fnGenerarContenedores, render } from "../vista/funcionesDeLaVista.js";
@@ -25,6 +25,8 @@ window.onload = async () => {
         console.log(`\nRegión seleccionada: ${nombreRegion}`);
         console.log(`Cantidad de países encontrados: ${paisesSimples.length}`);
         console.log(`Lista de países (Objeto):`, paisesSimples);
+        // Para Punto 2
+        fnEjercitarDestructuring(datosBrutos);
 
         // 4. Creamos los elementos visuales 
         const elementos = fnGenerarContenedores(paisesSimples);
@@ -54,52 +56,3 @@ window.onload = async () => {
         cargarYMostrar(fnUnirPaisesDelMundo, "Mundo Completo");
 
 };
-
-/*
-    MODELO VISTA CONTROLADOR
-
-    VISTA: 
-        ESTATICOS: HTML, CSS, ...
-
-        DINAMICA: RENDERIZACION DINAMICA DEL COM
-            * map
-            * ForEach
-
-    CONTROLADOR:
-
-        - CAPTURAR LOS EVENTOS QUE SUCEDEN EN EL DOM (Document Object Model)
-            - click
-            - checkbox
-            - selectores
-            - capturar los valores que se ingresaron en los input
-            - onload
-
-            - Buscar => click del Buscar. capturar el valor que ingreso en un input =>
-
-                tiene que llamar a una función del Modelo
-                que se encargue del trabajo "SUCIO"
-                de conectarse al endPoint en la nube
-                pasarle el parametro del valor que quiere buscar
-                esa función del Modelo, seguramente
-                recuperara datos en formato JSON. y
-                el controlador, se va a encargar de tomar
-                esos datos (esos resultados) y dibujarlos en el DOM
-
-    MODELO: (No significa que sea un solo archivo)
-        - recuperar datos desde APIS
-        - recuperar datos desde APIs haciendo funciones
-        que reciban parametros y devuelve un dato en particular
-        - recuperar datos desde APIs => localStorage
-
-        - recuperar datos desde localStorage => vectores
-
-        - find, 
-        - reduce
-
-        - consultar datos de una persona desde el REGISTRO NACIONAL DE LAS PERSONAS
-
-
-
-
-
-*/
