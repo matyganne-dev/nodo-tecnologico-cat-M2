@@ -33,6 +33,7 @@ window.onload = async () => {
         const datosBrutos = await fuenteDatos();
         let datosAMostrar;
 
+        //mantener limpia la consola
         console.clear();
 
         if (!modoCombinarActivo) {

@@ -70,25 +70,25 @@ export const fnEjercitarDestructuring = (paises) => {
     const muestra = paises.slice(0, 1);
 
     console.log("\nINCISO A: Destructuring Simple");
-    muestra.forEach(pais => {
+    paises.forEach(pais => {
         const { name, population, flags } = pais;
         console.log(`Nombre: ${name.common} | Pob: ${population} | Bandera: ${flags.png}`);
     });
 
     console.log("\nINCISO B: Destructuring con Alias");
-    muestra.forEach(pais => {
+    paises.forEach(pais => {
         const { name: { common: nombre }, population: poblacion, flags: { png: bandera } } = pais;
         console.log(`País: ${nombre} | Habitantes: ${poblacion} | Link: ${bandera}`);
     });
 
     console.log("\nINCISO D: Destructuring Array (Capital)");
-    muestra.forEach(pais => {
+    paises.forEach(pais => {
         const [capital = "Sin Datos"] = pais.capital || [];
         console.log(`Capital: ${capital}`);
     });
 
     console.log("\nINCISO C: Destructuring en Parámetros");
-    muestra.forEach(({ name: { common }, population }) => {
+    paises.forEach(({ name: { common }, population }) => {
         console.log(`Directo -> ${common}: ${population}`);
     });
 };
@@ -121,6 +121,6 @@ export const fnEjecutarIncisoF = (listaCombinada) => {
     const listaLimpia = fnGenerarVectorSimple(listaCombinada);
     const paisSeleccionado = listaLimpia[0];
 
-    console.log("--- RESULTADO INCISO F (OBJETO SIMPLIFICADO) ---");
+    console.log("RESULTADO INCISO F (OBJETO SIMPLIFICADO)");
     console.log("Primer país del listado unido (Resumen):", paisSeleccionado);
 };
