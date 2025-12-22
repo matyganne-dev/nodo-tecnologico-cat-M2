@@ -45,3 +45,32 @@ export const render = (elementosDelDOM, idContenedor) => {
     idContenedor.innerHTML = "";
     elementosDelDOM.forEach(elemento => idContenedor.appendChild(elemento));
 };
+
+export const fnGenerarTabla = (PaisesSimples) => {
+    const tabla = document.createElement("table");
+    tabla.classList.add("tabla-glass");
+
+    tabla.innerHTML = `
+        <thead>
+            <tr>
+                <th>Bandera</th>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Población</th>
+                <th>Continente</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${PaisesSimples.map(pais => `
+                <tr>
+                    <td><img src="${pais.png}" class="img-tabla" alt="Bandera"></td>
+                    <td><span class="nombre-tabla">${pais.nombreGenerico}</span></td>
+                    <td>${pais.capital}</td>
+                    <td>${(pais.poblacion / 1000000).toFixed(1)}M</td>
+                    <td><span class="badge-tabla">${pais.continente}</span></td>
+                </tr>
+            `).join('')}
+        </tbody>
+    `;
+    return [tabla];
+};

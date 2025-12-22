@@ -70,7 +70,7 @@ body {
 
         article.card-mini {
             --gradient_rotate: 0deg;
-            --border_width: 0.4rem;
+            --border_width: 0.2rem;
             --metal_01: rgb(200 200 220);
             --metal_02: rgb(160 160 180);
             --metal_03: rgb(120 120 140);
@@ -86,7 +86,7 @@ body {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 26px;
+            border-radius: 18px;
             border: var(--border_width) solid transparent;
 
             background: linear-gradient(0deg, rgb(10 10 10) 10%, rgb(40 40 50)) padding-box,
@@ -184,7 +184,6 @@ body {
         article.pais-card-moderna {
             position: relative;
             height: 220px;
-            /* overflow: hidden; */
             background: #131314;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -282,6 +281,83 @@ body {
                     border-radius: 20px;
                     font-weight: 900;
                     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+
+    #idContenedorPrincipal:has(.tabla-glass) {
+        display: block;
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .tabla-glass {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 12px;
+        font-family: 'Inter', sans-serif;
+        color: white;
+
+        thead th {
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: left;
+        }
+
+        tbody tr {
+            background: rgba(82, 82, 82, 0.432);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            &:hover {
+                background: rgba(8, 1, 1, 0.671);
+                transform: scale(1.01);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            td {
+                padding: 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                vertical-align: middle;
+
+                &:first-child {
+                    border-left: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 15px 0 0 15px;
+                }
+
+                &:last-child {
+                    border-right: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 0 15px 15px 0;
+                }
+
+                .img-tabla {
+                    width: 45px;
+                    height: 30px;
+                    object-fit: cover;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                }
+
+                .nombre-tabla {
+                    font-family: 'Outfit', sans-serif;
+                    font-weight: 700;
+                    font-size: 1rem;
+                }
+
+                .badge-tabla {
+                    background: rgba(255, 255, 255, 0.1);
+                    padding: 4px 12px;
+                    border-radius: 20px;
+                    font-size: 0.7rem;
+                    font-weight: 800;
+                    text-transform: uppercase;
                 }
             }
         }
