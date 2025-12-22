@@ -29,7 +29,28 @@ window.onload = async () => {
         console.log(modoCombinarActivo ? "MODO COMBINACIÓN ACTIVADO" : "MODO NORMAL ACTIVADO");
     };
 
+    // Función para cambiar el fondo dinámicamente
+    const actualizarFondo = (nombreRegion) => {
+        const body = document.body;
+
+        // Limpiamos todas las clases que empiecen con "bg-"
+        Array.from(body.classList).forEach(className => {
+            if (className.startsWith('bg-')) body.classList.remove(className);
+        });
+
+        const nombreLimpio = nombreRegion
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, '-');
+
+        const claseFinal = `bg-${nombreLimpio}`;
+
+        body.classList.add(claseFinal);
+    };
+
     const cargarYMostrar = async (fuenteDatos, nombreRegion, elementoClickeado) => {
+        actualizarFondo(nombreRegion);
         const datosBrutos = await fuenteDatos();
         let datosAMostrar;
 
@@ -42,7 +63,7 @@ window.onload = async () => {
             elementoClickeado.classList.add("seleccionado");
             console.log(`REGIÓN: ${nombreRegion}`);
             console.log(`Cantidad de países encontrados: ${datosBrutos.length}`);
-            fnEjercitarDestructuring(datosBrutos); 
+            fnEjercitarDestructuring(datosBrutos);
             datosAMostrar = datosBrutos;
         } else {
             // Modo Combinación: Puntos E, F
@@ -54,14 +75,14 @@ window.onload = async () => {
                 datosAMostrar = datosBrutos;
                 console.log(`Ancla fijada en: ${nombreAncla}. Selecciona otra región.`);
             } else {
-                document.querySelectorAll(".card-mini").forEach(card => { 
-                    if(!card.dataset.esAncla) card.classList.remove("seleccionado");
+                document.querySelectorAll(".card-mini").forEach(card => {
+                    if (!card.dataset.esAncla) card.classList.remove("seleccionado");
                 });
                 elementoClickeado.classList.add("seleccionado");
 
                 // Inciso E
                 datosAMostrar = fnProcesarIncisoE(regionAncla, datosBrutos, nombreAncla, nombreRegion);
-                
+
                 // Inciso F
                 fnEjecutarIncisoF(datosAMostrar);
             }
@@ -73,23 +94,23 @@ window.onload = async () => {
         render(elementos, idContenedorPrincipal);
     };
 
-    document.querySelector("#btn-africa").onclick = function() { 
-        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAfrica), "África", this); 
+    document.querySelector("#btn-africa").onclick = function () {
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAfrica), "África", this);
     };
-    document.querySelector("#btn-americas").onclick = function() { 
-        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAmerica), "Américas", this); 
+    document.querySelector("#btn-americas").onclick = function () {
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAmerica), "Américas", this);
     };
-    document.querySelector("#btn-asia").onclick = function() { 
-        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAsia), "Asia", this); 
+    document.querySelector("#btn-asia").onclick = function () {
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAsia), "Asia", this);
     };
-    document.querySelector("#btn-europa").onclick = function() { 
-        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointEuropa), "Europa", this); 
+    document.querySelector("#btn-europa").onclick = function () {
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointEuropa), "Europa", this);
     };
-    document.querySelector("#btn-oceania").onclick = function() { 
-        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointOceania), "Oceanía", this); 
+    document.querySelector("#btn-oceania").onclick = function () {
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointOceania), "Oceanía", this);
     };
 
-    document.querySelector("#btn-todos").onclick = function() {
+    document.querySelector("#btn-todos").onclick = function () {
         modoCombinarActivo = false;
         regionAncla = null;
         btnCombinar.classList.remove("activo");

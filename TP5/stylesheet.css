@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 @property --gradient_rotate {
     syntax: "<angle>";
@@ -7,11 +8,52 @@
 }
 
 body {
-    font-family: "Orbitron", sans-serif;
+    font-family: "Montserrat", sans-serif;
     background: #131314;
     min-height: 90vh;
     margin: 0;
     color: white;
+    position: relative;
+    transition: background 0.8s ease;
+    background: #131314;
+
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background-image 1s ease-in-out, opacity 1s ease;
+        opacity: 0.3;
+    }
+
+    /* Clases dinámicas para cada continente */
+    &.bg-africa::before {
+        background-image: url('https://images.pexels.com/photos/2660262/pexels-photo-2660262.jpeg');
+    }
+
+    &.bg-americas::before {
+        background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=1920');
+    }
+
+    &.bg-asia::before {
+        background-image: url('https://images.pexels.com/photos/2337927/pexels-photo-2337927.jpeg');
+    }
+
+    &.bg-europa::before {
+        background-image: url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1920');
+    }
+
+    &.bg-oceania::before {
+        background-image: url('https://images.pexels.com/photos/35278842/pexels-photo-35278842.jpeg');
+    }
+
+    /*no me funciona esto, pero me quedo sin tiempo - repara a futuro*/
+    &.bg-mundo::before {
+        background-image: url('https://images.pexels.com/photos/35278842/pexels-photo-35278842.jpeg');
+    }
 
     #main-texts {
         text-align: center;
