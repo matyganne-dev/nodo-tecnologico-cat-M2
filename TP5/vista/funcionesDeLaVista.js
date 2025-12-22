@@ -1,15 +1,13 @@
 
 
-/* El objetivo de esta función es
-tomar todos los paises del Vector Simple.
-transformar cada pais en un elemento visual del DOM
+/* El objetivo de esta función es tomar todos los paises del Vector Simple. transformar cada pais 
+en un elemento visual del DOM
 */
 export const fnGenerarContenedores = (PaisesSimples) =>{
 
     const elementosDelDOM = PaisesSimples.map(pais =>{
 
-        /* aqui dentro voy a construir el div
-        por cada pais */
+        /* aqui dentro voy a construir el div por cada pais */
 
         const contenedorPais = document.createElement("div");
 
