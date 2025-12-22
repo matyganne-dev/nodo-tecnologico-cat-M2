@@ -1,5 +1,5 @@
 
-import { fnUnirPaisesDelMundo, fnGenerarVectorSimple, fnEjercitarDestructuring } from "../modelo/fusionDeDatos.js";
+import { fnUnirPaisesDelMundo, fnGenerarVectorSimple, fnEjercitarDestructuring, fnEjercitarSpread } from "../modelo/fusionDeDatos.js";
 import { fnRecuperarDatosEndPoint } from "../modelo/modelo.js";
 import { endPointAfrica, endPointAmerica, endPointAsia, endPointEuropa, endPointOceania } from "../modelo/endPoint.js";
 import { fnGenerarContenedores, render } from "../vista/funcionesDeLaVista.js";
@@ -27,6 +27,9 @@ window.onload = async () => {
         console.log(`Lista de países (Objeto):`, paisesSimples);
         // Para Punto 2
         fnEjercitarDestructuring(datosBrutos);
+
+        // Para Punto 3
+        fnEjercitarSpread(datosBrutos, datosBrutos);
 
         // 4. Creamos los elementos visuales 
         const elementos = fnGenerarContenedores(paisesSimples);

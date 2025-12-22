@@ -92,3 +92,22 @@ export const fnEjercitarDestructuring = (paises) => {
         console.log(`Directo -> ${common}: ${population}`);
     });
 };
+
+//Punto 3
+export const fnEjercitarSpread = async (paisesRegion1, paisesRegion2) => {
+    // Inciso E: Combinar dos regiones
+    const regionesCombinadas = [...paisesRegion1, ...paisesRegion2];
+    console.log("INCISO E: Spread Operator (Combinar Regiones)");
+    console.log(`Total países combinados: ${regionesCombinadas.length}`);
+
+    // Inciso F: Objeto simplificado con Spread y Destructuring
+    console.log("INCISO F: Objeto Simplificado (Un país)");
+    const unPais = regionesCombinadas[0]; // Seleccionamos el primero
+
+    // Sacamos los datos y creamos el nuevo objeto
+    const { name: { common: nombre }, population: poblacion, flags: { png: bandera } } = unPais;
+    const [capital = "N/A"] = unPais.capital || [];
+
+    const objetoSimplificado = { nombre, capital, poblacion, bandera };
+    console.log(objetoSimplificado);
+};
