@@ -1,29 +1,57 @@
 
-import {fnUnirPaisesDelMundo} from "../modelo/fusionDeDatos.js";
-import {fnGenerarVectorSimple} from "../modelo/fusionDeDatos.js";
-import {fnGenerarContenedores,render} from "../vista/funcionesDeLaVista.js";
+import { fnUnirPaisesDelMundo, fnGenerarVectorSimple } from "../modelo/fusionDeDatos.js";
+import { fnRecuperarDatosEndPoint } from "../modelo/modelo.js";
+import { endPointAfrica, endPointAmerica, endPointAsia, endPointEuropa, endPointOceania } from "../modelo/endPoint.js";
+import { fnGenerarContenedores, render } from "../vista/funcionesDeLaVista.js";
 
-window.onload = async ()=>{
+window.onload = async () => {
 
-    console.log(`aplication is running`);
+    console.log(`Aplicación iniciada y esperando interacción...`);
 
     const idContenedorPrincipal = document.querySelector("#idContenedorPrincipal");
 
-    /* aqui estoy fusionando todos los paises
-    pero me devuelve una estructura de objetos
-    compleja. y que no es util para lo que yo necesito */
+    // Función interna para manejar la lógica de carga y dibujado
+    const cargarYMostrar = async (fuenteDatos, nombreRegion) => {
+        // 1. Limpiamos lo que haya antes para que no se amontone
+        idContenedorPrincipal.innerHTML = "";
 
-    const Paises = await fnUnirPaisesDelMundo(); // este recupera de internet. los fusiona
+        // 2. Obtenemos los datos
+        const datosBrutos = await fuenteDatos();
 
-    const PaisesSimples = fnGenerarVectorSimple(Paises); // este los transforma y devuelve un vector de paises mas simple
+        // 3. Los transformamos a formato simple 
+        const paisesSimples = fnGenerarVectorSimple(datosBrutos);
 
-    // console.log(Paises);
+        //Muestra en consola
+        console.log(`\nRegión seleccionada: ${nombreRegion}`);
+        console.log(`Cantidad de países encontrados: ${paisesSimples.length}`);
+        console.log(`Lista de países (Objeto):`, paisesSimples);
 
-    console.log(PaisesSimples);
+        // 4. Creamos los elementos visuales 
+        const elementos = fnGenerarContenedores(paisesSimples);
 
-    const elementosDelDOM = fnGenerarContenedores(PaisesSimples);
+        // 5. Los mostramos en pantalla 
+        render(elementos, idContenedorPrincipal);
+    };
 
-    render(elementosDelDOM,idContenedorPrincipal);
+    // --- Configuramos los clics de las Mini Cards ---
+
+    document.querySelector("#btn-africa").onclick = () =>
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAfrica), "África");
+
+    document.querySelector("#btn-americas").onclick = () =>
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAmerica), "Américas");
+
+    document.querySelector("#btn-asia").onclick = () =>
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointAsia), "Asia");
+
+    document.querySelector("#btn-europa").onclick = () =>
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointEuropa), "Europa");
+
+    document.querySelector("#btn-oceania").onclick = () =>
+        cargarYMostrar(() => fnRecuperarDatosEndPoint(endPointOceania), "Oceanía");
+
+    document.querySelector("#btn-todos").onclick = () =>
+        cargarYMostrar(fnUnirPaisesDelMundo, "Mundo Completo");
 
 };
 
