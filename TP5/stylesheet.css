@@ -13,7 +13,7 @@ body {
     margin: 0;
     color: white;
 
-    #main-texts{
+    #main-texts {
         text-align: center;
         margin: 5rem;
     }
@@ -38,16 +38,13 @@ body {
 
             position: relative;
             cursor: pointer;
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 56px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-top-left-radius: 100px;
-            border-bottom-right-radius: 100px;
-            border-top-right-radius: 100px;
-            border-bottom-left-radius: 0;
+            border-radius: 26px;
             border: var(--border_width) solid transparent;
 
             background: linear-gradient(0deg, rgb(10 10 10) 10%, rgb(40 40 50)) padding-box,
@@ -84,11 +81,11 @@ body {
             }
 
             img {
-                width: 35px;
-                height: 35px;
+                width: 28px;
+                height: 28px;
                 filter: invert(1);
                 z-index: 2;
-                margin-bottom: 5px;
+                margin-bottom: 2px;
             }
 
             span {

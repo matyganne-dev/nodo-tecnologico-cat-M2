@@ -41,6 +41,7 @@ window.onload = async () => {
             limpiarSeleccionContinentes();
             elementoClickeado.classList.add("seleccionado");
             console.log(`REGIÓN: ${nombreRegion}`);
+            console.log(`Cantidad de países encontrados: ${datosBrutos.length}`);
             fnEjercitarDestructuring(datosBrutos); 
             datosAMostrar = datosBrutos;
         } else {
