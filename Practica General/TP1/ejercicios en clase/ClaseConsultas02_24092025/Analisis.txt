@@ -1,0 +1,18 @@
+precio está en función
+de la cantidad de elementos
+que lleva.
+
+1) 38.000,00 -  36.000,00 - 34.000,00
+2) 31.000,00 -  29.000,00 - 27.000,00
+3) 46.000,00 -  44.000,00 - 42.000,00
+
+---------------------------------------
+
+preguntar es que producto lleva ?.
+(1,2,3) 
+
+pregunta la cantidad de bolsas ?.
+
+totalVenta = 29000 * 7 = 203.000,00
+
+

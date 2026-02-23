@@ -1,0 +1,91 @@
+
+
+- pagina JSON VIEWER
+
+VISUALIZADOR DE DATOS EN FORMATO JSON - ONLINE
+
+    https://jsoncrack.com/
+
+    https://restcountries.com/v3.1/region/africa
+    https://restcountries.com/v3.1/region/asia
+    https://restcountries.com/v3.1/region/americas
+    https://restcountries.com/v3.1/region/europe
+    https://restcountries.com/v3.1/region/oceania
+
+EXTENSIONES QUE SE PUEDEN AGREGAR AL NAVEGADOR
+
+    JSON BONITO:
+
+    https://chromewebstore.google.com/detail/json-bonito/nflbalmkceonkkhifbifebanhladdgcp
+
+    Copiar y pegar este link en el navegador:
+
+    https://chromewebstore.google.com/detail/json-bonito/nflbalmkceonkkhifbifebanhladdgcp
+
+
+    Presionar el botón “Agregar a Chrome”
+
+    Confirmar la instalación
+
+    
+
+      //console.log(Paises);
+
+    /************* Vamos a comenzar con Destructuring ************/
+
+    Paises.forEach(pais => {
+
+        /* Ejemplo 01 - voy a mostrar el objeto completo */
+
+        console.log("------ ejemplo 01 - objeto completo");
+
+        console.log(pais);
+
+        /* Ejemplo 02 - estoy haciendo destructuring directo */
+
+         console.log("------ ejemplo 02 - mostramos el area");
+         const {area,population,region} = pais;
+         console.log(area);
+         console.log(population);
+         console.log(region);
+
+         /* Ejemplo 04 - Destructuring renombrando */
+         const {area:superficie,population:poblacion,region:continente} = pais;
+
+         console.log("------ ejemplo 04 - Destructuring renombrado");
+
+         console.log(superficie,poblacion,continente);
+
+         /* Ejemplo 05 - Sacar los Nombres dentro de un Objeto */
+
+         const {name} = pais; // es un atributo objeto
+
+         console.log("------ ejemplo 05 - Destructuring de un atributo objeto");
+
+         console.log(name);
+
+        /* Ejemplo 06 - Voy a acceder directamente al nombre commun y oficial */
+
+        console.log("------ ejemplo 06 - Destructuring de un atributo objeto");
+
+        const {common:nombreGenerico,official:nombreOficial} = pais.name;
+
+        console.log(nombreGenerico,nombreOficial);
+
+        /* Ejemplo 07 - voy a acceder a las Banderas / Flags */
+
+        console.log("------ ejemplo 07 - Destructuring de las Banderas");
+
+        const {png,svg} = pais.flags;
+
+        console.log(png,svg);
+
+        /* Ejemplo 08 - voy a hacer destructuring de los Limites */
+
+        console.log("------ ejemplo 08 - Destructuring de las Banderas");
+        const {borders} = pais.name;
+
+        console.log(borders);
+
+
+    });

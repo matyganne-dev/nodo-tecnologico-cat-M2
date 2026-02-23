@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@property --gradient_rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #131314;
+    min-height: 90vh;
+    margin: 0;
+    color: white;
+    position: relative;
+    transition: background 0.8s ease;
+    background: #131314;
+
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background-image 1s ease-in-out, opacity 1s ease;
+        opacity: 0.3;
+    }
+
+    /* Clases dinámicas para cada continente */
+    &.bg-africa::before {
+        background-image: url('https://images.pexels.com/photos/2660262/pexels-photo-2660262.jpeg');
+    }
+
+    &.bg-americas::before {
+        background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=1920');
+    }
+
+    &.bg-asia::before {
+        background-image: url('https://images.pexels.com/photos/2337927/pexels-photo-2337927.jpeg');
+    }
+
+    &.bg-europa::before {
+        background-image: url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1920');
+    }
+
+    &.bg-oceania::before {
+        background-image: url('https://images.pexels.com/photos/35278842/pexels-photo-35278842.jpeg');
+    }
+
+    /*no me funciona esto, pero me quedo sin tiempo - repara a futuro*/
+    &.bg-mundo::before {
+        background-image: url('https://images.pexels.com/photos/35278842/pexels-photo-35278842.jpeg');
+    }
+
+    #main-texts {
+        text-align: center;
+        margin: 5rem;
+    }
+
+    #contenedor-botones {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 40px;
+        perspective: 1000px;
+
+        article.card-mini {
+            --gradient_rotate: 0deg;
+            --border_width: 0.2rem;
+            --metal_01: rgb(200 200 220);
+            --metal_02: rgb(160 160 180);
+            --metal_03: rgb(120 120 140);
+            --metal_04: rgb(80 80 100);
+            --metal_05: rgb(40 40 60);
+            --metal_06: rgb(10 10 10);
+
+            position: relative;
+            cursor: pointer;
+            width: 110px;
+            height: 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            border: var(--border_width) solid transparent;
+
+            background: linear-gradient(0deg, rgb(10 10 10) 10%, rgb(40 40 50)) padding-box,
+                conic-gradient(from var(--gradient_rotate),
+                    rgb(from var(--metal_01) r g b / 0.5),
+                    rgb(from var(--metal_01) r g b / 0.0),
+                    rgb(from var(--metal_06) r g b / 0.0),
+                    rgb(from var(--metal_06) r g b / 1.0),
+                    rgb(from var(--metal_04) r g b / 0.5),
+                    rgb(from var(--metal_04) r g b / 0.0),
+                    rgb(from var(--metal_04) r g b / 1.0),
+                    rgb(from var(--metal_01) r g b / 0.5)) border-box;
+
+            animation: button_gradient_rotate 12s linear infinite;
+            transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: calc(-1 * var(--border_width));
+                z-index: -1;
+                border-radius: inherit;
+                background: conic-gradient(from var(--gradient_rotate),
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) padding-box,
+                    conic-gradient(from 0deg,
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) border-box;
+                animation: button_gradient_rotate 8s linear infinite reverse;
+                border: 0.15rem solid transparent;
+                opacity: 0.5;
+            }
+
+            img {
+                width: 28px;
+                height: 28px;
+                filter: invert(1);
+                z-index: 2;
+                margin-bottom: 2px;
+            }
+
+            span {
+                font-size: 0.825rem;
+                font-weight: 700;
+                color: #fff;
+                z-index: 2;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                filter: brightness(1.3);
+            }
+
+            &.seleccionado {
+                --metal_01: rgb(100 200 255);
+                --metal_03: rgb(0 100 255);
+                box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
+                background: conic-gradient(from var(--gradient_rotate),
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) padding-box,
+                    conic-gradient(from 0deg,
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) border-box;
+            }
+
+            &.activo {
+                --metal_01: rgb(150 255 150);
+                --metal_03: rgb(40 167 69);
+                box-shadow: 0 0 30px rgba(40, 167, 69, 0.5);
+                background: conic-gradient(from var(--gradient_rotate),
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) padding-box,
+                    conic-gradient(from 0deg,
+                        var(--metal_03), var(--metal_01), var(--metal_01),
+                        var(--metal_06), var(--metal_02), var(--metal_05),
+                        var(--metal_04), var(--metal_03)) border-box;
+            }
+        }
+    }
+
+    #idContenedorPrincipal {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 350px));
+        justify-content: center;
+        gap: 50px;
+        padding: 60px 20px;
+
+        article.pais-card-moderna {
+            position: relative;
+            height: 220px;
+            background: #131314;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+
+            &:hover {
+                .overlay-vidrio {
+                    opacity: 1;
+                    backdrop-filter: blur(40px) saturate(180%) brightness(1.1);
+                    -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.1);
+                }
+
+                .background-bandera {
+                    transform: scale(1.1);
+                }
+            }
+
+            .background-bandera {
+                position: absolute;
+                inset: 0;
+                background-size: cover;
+                background-position: center;
+                z-index: 1;
+                transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+
+            .notch-bottom-left {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: #131314;
+                padding: 16px 30px;
+                border-top-right-radius: 35px;
+                z-index: 10;
+                box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.2);
+
+                .nombre-texto {
+                    font-size: 1.25rem;
+                    font-weight: 900;
+                    color: #fff;
+                    text-transform: capitalize;
+                }
+            }
+
+            .notch-top-right {
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: #131314;
+                padding: 12px 25px;
+                border-bottom-left-radius: 30px;
+                z-index: 10;
+
+                .texto-notch {
+                    font-size: 0.75rem;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    color: #fff;
+                }
+            }
+
+            .overlay-vidrio {
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+                opacity: 0;
+                background: rgba(255, 255, 255, 0.05);
+                transition: all 0.5s ease-in-out;
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 30px;
+                box-sizing: border-box;
+
+                .info-secundaria {
+                    flex: 1;
+                    margin-bottom: 15px;
+
+                    p {
+                        margin: 3px 0;
+                        font-size: 0.95rem;
+                        color: rgba(255, 255, 255, 0.9);
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+                        strong {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .pob-chip {
+                    background: #fff;
+                    color: #000;
+                    padding: 10px 22px;
+                    border-radius: 20px;
+                    font-weight: 900;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+
+    #idContenedorPrincipal:has(.tabla-glass) {
+        display: block;
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .tabla-glass {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 12px;
+        font-family: 'Inter', sans-serif;
+        color: white;
+
+        thead th {
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: left;
+        }
+
+        tbody tr {
+            background: rgba(82, 82, 82, 0.432);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            &:hover {
+                background: rgba(8, 1, 1, 0.671);
+                transform: scale(1.01);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            td {
+                padding: 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                vertical-align: middle;
+
+                &:first-child {
+                    border-left: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 15px 0 0 15px;
+                }
+
+                &:last-child {
+                    border-right: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 0 15px 15px 0;
+                }
+
+                .img-tabla {
+                    width: 45px;
+                    height: 30px;
+                    object-fit: cover;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                }
+
+                .nombre-tabla {
+                    font-family: 'Outfit', sans-serif;
+                    font-weight: 700;
+                    font-size: 1rem;
+                }
+
+                .badge-tabla {
+                    background: rgba(255, 255, 255, 0.1);
+                    padding: 4px 12px;
+                    border-radius: 20px;
+                    font-size: 0.7rem;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+@keyframes button_gradient_rotate {
+    from {
+        --gradient_rotate: 0deg;
+    }
+
+    to {
+        --gradient_rotate: 360deg;
+    }
+}

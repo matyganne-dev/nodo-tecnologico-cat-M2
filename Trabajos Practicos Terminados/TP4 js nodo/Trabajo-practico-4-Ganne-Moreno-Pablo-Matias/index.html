@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRABAJO PRÁCTICO NRO. 04 – JAVASCRIPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Trabajo Práctico N°4: Cohortes de Alumnos</h1>
+        <p class="subtitle">Fundamentos de Programación con JavaScript (Resultados en
+            DOM y Consola).</p>
+    </header>
+
+    <main>
+        <section class="section-wrap exercise1-container">
+            <h2>1. Listado por Cohorte (forEach)</h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 1</h3>
+                    <p class="description-text">
+                        El objetivo es recorrer cada vector de cohortes (Cohorte 01 a 04) usando el método forEach y
+                        mostrar el Apellido y Nombre de cada alumno en la zona de resultados.
+                    </p>
+                    <button id="btn-cohorte1" class="action-button">Listar Cohorte 01</button>
+                    <button id="btn-cohorte2" class="action-button">Listar Cohorte 02</button>
+                    <button id="btn-cohorte3" class="action-button">Listar Cohorte 03</button>
+                    <button id="btn-cohorte4" class="action-button">Listar Cohorte 04</button>
+                    <button id="btn-limpiar" class="secondary-button">Limpiar</button>
+                </div>
+
+                <div id="ejercicio1-resultados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver los listados...</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="section-wrap exercise1-container">
+            <h2>2. unificar el contenido de las cuatro cohortes</h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 2</h3>
+                    <p class="description-text">
+                        El profesor desea unificar todos los alumnos en un solo vector, dado que estructuralmente son
+                        iguales.
+                    </p>
+                    <button id="btn-listar" class="action-button">Listar Alumnos</button>
+                    <button id="btn-limpiar1" class="secondary-button">Limpiar</button>
+                </div>
+
+                <div id="ejercicio2-resultados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver los listados...</p>
+                </div>
+            </div>
+        </section>
+
+
+        <hr>
+
+        <section class="section-wrap exercise1-container">
+            <h2>3. Filtrar alumnos Aprobados o Desaprobados </h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 3</h3>
+                    <p class="description-text">
+                        Filtrar Alumnos aprobados (nota > 5) y Alumnos Desaprobados (nota menor a 5) </p>
+                    <button id="btn-A" class="action-button-A">Listar Aprobados</button>
+                    <button id="btn-F" class="action-button-F">Listar Desaprobados</button>
+                    <button id="btn-limpiar2" class="secondary-button">Limpiar</button>
+                </div>
+
+                <div id="ejercicio3-resultados-Aprobados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver los listados...</p>
+                </div>
+                <div id="ejercicio3-resultados-Desaprobados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver los listados...</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="section-wrap exercise1-container">
+            <h2>4. Ordenar notas de menor a mayor</h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 4</h3>
+                    <p class="description-text">
+                        ordene los datos de todos esos alumnos por nota de menor a mayor.
+                    </p>
+                    <button id="btn-sort" class="action-button">Ordenar</button>
+                    <button id="btn-limpiar4" class="secondary-button">Limpiar</button>
+                </div>
+
+                <div id="ejercicio4-resultados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver los listados...</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="section-wrap exercise5-container">
+            <h2>5. Búsqueda de Alumno</h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 5</h3>
+                    <p class="description-text">
+                        Buscar un alumno específico por su DNI en el vector total de alumnos.
+                    </p>
+                    <input type="text" id="input-dni" placeholder="DNI (Ej: 12345678)" class="text-input">
+                    <button id="btn-buscar" class="action-button">Buscar Alumno</button>
+                    <button id="btn-limpiar5" class="secondary-button">Limpiar</button>
+                </div>
+
+                <div id="ejercicio5-resultados" class="display-panel">
+                    <p class="placeholder-text">Ingrese un DNI y presione Buscar.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="section-wrap exercise6-container">
+            <h2>6. Contabilizar Aprobados</h2>
+
+            <div class="interactive-layout">
+
+                <div class="control-panel">
+                    <h3>Ejercicio N° 6</h3>
+                    <p class="description-text">
+                        Contabilice la cantidad de alumnos con nota > 5 usando el método 'reduce', implementado de dos
+                        formas: con if/else y con operador ternario.
+                    </p>
+                    <button id="btn-contabilizar" class="action-button">Contabilizar Aprobados</button>
+                    <button id="btn-limpiar6" class="secondary-button">Limpiar</button>
+                </div>
+
+                <div id="ejercicio6-resultados" class="display-panel">
+                    <p class="placeholder-text">Presione el botón para ver la cantidad de aprobados.</p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <script type="module" src="controlador.js"></script>
+</body>
+
+</html>
